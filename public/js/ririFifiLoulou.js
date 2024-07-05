@@ -60,7 +60,19 @@ const validateEdges = () => {
 		  });
 	}
 	else {
-		alert("PERDU ce n'est pas la bonne réponse !");
+		swal({
+			title: "Dommage !",
+			text: "Voulez-vous réessayer ou passer à la suite ?",
+			icon: "error",
+			buttons: ["Réessayer", "Menu"],
+		  })
+		  .then((menu) => {
+			if (menu) {
+			  window.location.href = "/public/html/menu.html";
+			} else {
+				resetEdgesColor();
+			}
+		});
 	}
 };
 
