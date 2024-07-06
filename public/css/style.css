@@ -73,8 +73,8 @@ canvas {
 
 }
 
-blackEdge {
-	color: black;
+lightgreyEdge {
+	color: lightgrey;
 	font-size: 40px;
 }
 
