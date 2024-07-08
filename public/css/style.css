@@ -73,8 +73,8 @@ canvas {
 
 }
 
-lightgreyEdge {
-	color: lightgrey;
+greyEdge {
+	color: grey;
 	font-size: 40px;
 }
 

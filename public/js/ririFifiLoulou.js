@@ -90,12 +90,12 @@ graphe.addEventListener("click", (event) => {
 
 		// Vérifie si le point cliqué est proche de l'arête
 		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 1) {
-			if (edge.color === "lightgrey") {
+			if (edge.color === "grey") {
 				edge.color = "red";
 			} else if (edge.color === "red") {
 				edge.color = "green";
 			} else if (edge.color === "green") {
-				edge.color = "lightgrey";
+				edge.color = "grey";
 			}
 			redrawGraph();
 		}
