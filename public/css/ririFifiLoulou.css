@@ -1,0 +1,102 @@
+body {
+	display: flex;
+	user-select: none;
+	padding: 10px;
+}
+
+/* Consigne */
+
+#consigne {
+	border: 2px #24A1EB solid;
+	border-radius: 10px;
+	margin-left: 10px;
+	background-color: aliceblue;
+	padding: 0px;
+	margin-bottom: 5px;
+	box-shadow: 0px 0px 3px black;
+}
+
+#consigne h1 {
+	text-align: center;
+	font-size: 40q;
+	background-color: rgba(36, 161, 235, 0.5);
+	margin-bottom: 50px;
+	padding: 0px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+#consigne p,
+#consigne ul {
+	font-size: 25q;
+	margin-bottom: 40px;
+	line-height: 30px;
+	margin-left: 10px;
+}
+
+ul li {
+	margin-bottom: 20px;
+}
+
+
+/* Canvas */
+canvas {
+	border: 2px solid black;
+	border-radius: 10px;
+	box-shadow: 0px 0px 5px black;
+}
+
+/* Aide au jeu */
+
+
+#aideJeu {
+	border: 2px #24A1EB solid;
+	border-radius: 10px;
+	margin-left: 10px;
+	background-color: aliceblue;
+	padding: 0px;
+	margin-bottom: 5px;
+	box-shadow: 0px 0px 3px black;
+}
+
+#aideJeu h5 {
+	padding: 20px;
+	margin: 0px;
+	text-align: center;
+}
+
+#aideJeu ul {
+	margin: 0px;
+	padding: 20px;
+	list-style-type: none;
+	font-size: 25q;
+
+}
+
+greyEdge {
+	color: grey;
+	font-size: 40px;
+}
+
+greenEdge {
+	color: green;
+	font-size: 40px;
+}
+
+redEdge {
+	color: red;
+	font-size: 40px;
+}
+
+/*button*/
+
+#resultat {
+	margin-left: 20px;
+	padding: 10px;
+	
+}
+
+#resultat button {
+	margin-left: 10px;
+	margin-top: 20px;
+}

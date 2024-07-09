@@ -4,17 +4,17 @@ import { k3, resetEdgesColor,edges,redrawGraph } from "/public/js/k3.js";
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
 const img1 = new Image();
-img1.src = "/public/picture/riri.png";
+img1.src = "/public/img/riri.png";
 const img2 = new Image();
-img2.src = "/public/picture/fifi.png";
+img2.src = "/public/img/fifi.png";
 const img3 = new Image();
-img3.src = "/public/picture/loulou.png";
+img3.src = "/public/img/loulou.png";
 const img4 = new Image();
-img4.src = "/public/picture/chat.png";
+img4.src = "/public/img/chat.png";
 const img5 = new Image();
-img5.src = "/public/picture/hamster.png";
+img5.src = "/public/img/hamster.png";
 const img6 = new Image();
-img6.src = "/public/picture/peroquet.png";
+img6.src = "/public/img/peroquet.png";
 const images = [img1, img2, img3, img4, img5, img6];
 
 
@@ -53,7 +53,7 @@ const validateEdges = () => {
 		  })
 		  .then((menu) => {
 			if (menu) {
-			  window.location.href = "/public/html/menu.html";
+			  window.location.href = "../../index.html";
 			} else {
 				resetEdgesColor();
 			}
@@ -68,7 +68,7 @@ const validateEdges = () => {
 		  })
 		  .then((menu) => {
 			if (menu) {
-			  window.location.href = "/public/html/menu.html";
+			  window.location.href = "../../index.html";
 			} else {
 				resetEdgesColor();
 			}
