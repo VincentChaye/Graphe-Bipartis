@@ -1,4 +1,4 @@
-import { k3, resetEdgesColor,edges,redrawGraph } from "/public/js/k3.js";
+import { k3, resetEdgesColor,edges,redrawGraph } from "../js/k3.js";
 
 
 const graphe = document.querySelector('#graphe');
