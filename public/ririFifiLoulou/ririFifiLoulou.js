@@ -38,37 +38,45 @@ const drawTheImage = () => {
 	});
 };
 
-// Validation des arêtes
 const validateEdges = () => {
-	if (edges[2].color === "green" && edges[3].color === "green" && edges[7].color === "green") {
-		swal({
-			title: "Bien joué !",
-			text: "Voulez-vous rejouer ou passer à la suite ?",
-			icon: "success",
-			buttons: ["Rejouer", "Menu"],
-		})
-		.then((menu) => {
-			if (menu) {
-				window.location.href = "../../index.html";
-			} else {
-				resetEdgesColor();
-			}
-		});
-	} else {
-		swal({
-			title: "Dommage !",
-			text: "Voulez-vous réessayer ou passer à la suite ?",
-			icon: "error",
-			buttons: ["Réessayer", "Menu"],
-		})
-		.then((menu) => {
-			if (menu) {
-				window.location.href = "../../index.html";
-			} else {
-				resetEdgesColor();
-			}
-		});
-	}
+    // Arrêtes vertes autorisées (index)
+    const authorizedGreenEdges = [2, 3, 7];
+    
+    // Vérifie si toutes les arrêtes vertes autorisées sont présentes
+    const allAuthorizedEdgesGreen = authorizedGreenEdges.every(index => edges[index].color === "green");
+
+    // Vérifie si il y a d'autres arrêtes vertes non autorisées
+    const anyUnauthorizedGreenEdge = edges.some((edge, index) => edge.color === "green" && !authorizedGreenEdges.includes(index));
+
+    if (allAuthorizedEdgesGreen && !anyUnauthorizedGreenEdge) {
+        swal({
+            title: "Bien joué !",
+            text: "Voulez-vous rejouer ou passer à la suite ?",
+            icon: "success",
+            buttons: ["Rejouer", "Menu"],
+        })
+        .then((menu) => {
+            if (menu) {
+                window.location.href = "../../index.html";
+            } else {
+                resetEdgesColor();
+            }
+        });
+    } else {
+        swal({
+            title: "Dommage !",
+            text: "Voulez-vous réessayer ou passer à la suite ?",
+            icon: "error",
+            buttons: ["Réessayer", "Menu"],
+        })
+        .then((menu) => {
+            if (menu) {
+                window.location.href = "../../index.html";
+            } else {
+                resetEdgesColor();
+            }
+        });
+    }
 };
 
 // Changement d'état des arêtes

@@ -1,83 +1,90 @@
-import { k3, resetEdgesColor,edges,redrawGraph } from "../js/k3.js";
-
+import { k5, resetEdgesColor, edges, redrawGraph } from "../js/k5.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
 const img1 = new Image();
-img1.src = "/public/img/riri.png";
+img1.src = "/public/img/aborigene.png";
 const img2 = new Image();
-img2.src = "/public/img/fifi.png";
+img2.src = "/public/img/chinoise.png";
 const img3 = new Image();
-img3.src = "/public/img/loulou.png";
+img3.src = "/public/img/inuit.png";
 const img4 = new Image();
-img4.src = "/public/img/chat.png";
+img4.src = "/public/img/peruvien.png";
 const img5 = new Image();
-img5.src = "/public/img/hamster.png";
+img5.src = "/public/img/touareg.png";
 const img6 = new Image();
-img6.src = "/public/img/peroquet.png";
-const images = [img1, img2, img3, img4, img5, img6];
+img6.src = "/public/img/kangourou.png";
+const img7 = new Image();
+img7.src = "/public/img/panda.png";
+const img8 = new Image();
+img8.src = "/public/img/ours-blanc.png";
+const img9 = new Image();
+img9.src = "/public/img/lama.png";
+const img10 = new Image();
+img10.src = "/public/img/dromadaire.png";
 
+const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
 // Intégration des images
 const drawTheImage = () => {
 	const positions = [
-		{ x: 145, y: 50 },
-		{ x: 345, y: 50 },
-		{ x: 545, y: 50 },
-		{ x: 145, y: 475 },
-		{ x: 345, y: 475 },
-		{ x: 545, y: 475 }
+		{ x: 50, y: 0 },
+		{ x: 200, y: 0 },
+		{ x: 350, y: 0 },
+		{ x: 500, y: 0 },
+		{ x: 650, y: 0 },
+		{ x: 50, y: 550 },
+		{ x: 200, y: 550 },
+		{ x: 350, y: 550 },
+		{ x: 500, y: 550 },
+		{ x: 650, y: 550 },
 	];
 
 	images.forEach((img, index) => {
 		if (img.complete) {
-			ctx.drawImage(img, positions[index].x, positions[index].y, 150, 190);
+			ctx.drawImage(img, positions[index].x, positions[index].y, 100, 140);
 		} else {
 			img.addEventListener("load", () => {
-				ctx.drawImage(img, positions[index].x, positions[index].y, 150, 190);
+				ctx.drawImage(img, positions[index].x, positions[index].y, 100, 140);
 			});
 		}
 	});
 };
 
-
-
-// Validation des arrêtes 
+// Validation des arêtes
 const validateEdges = () => {
-	if (edges[2].color === "green" && edges[3].color === "green" && edges[7].color === "green") {
+	if (edges[4].color === "green" && edges[10].color === "green" && edges[13].color === "green" && edges[17].color === "green" && edges[21].color === "green") {
 		swal({
 			title: "Bien joué !",
 			text: "Voulez-vous rejouer ou passer à la suite ?",
 			icon: "success",
 			buttons: ["Rejouer", "Menu"],
-		  })
-		  .then((menu) => {
-			if (menu) {
-			  window.location.href = "../../index.html";
-			} else {
-				resetEdgesColor();
-			}
-		  });
-	}
-	else {
+		})
+			.then((menu) => {
+				if (menu) {
+					window.location.href = "../../index.html";
+				} else {
+					resetEdgesColor();
+				}
+			});
+	} else {
 		swal({
 			title: "Dommage !",
 			text: "Voulez-vous réessayer ou passer à la suite ?",
 			icon: "error",
 			buttons: ["Réessayer", "Menu"],
-		  })
-		  .then((menu) => {
-			if (menu) {
-			  window.location.href = "../../index.html";
-			} else {
-				resetEdgesColor();
-			}
-		});
+		})
+			.then((menu) => {
+				if (menu) {
+					window.location.href = "../../index.html";
+				} else {
+					resetEdgesColor();
+				}
+			});
 	}
 };
 
-
-//changement d'état des arêtes
+// Changement d'état des arêtes
 graphe.addEventListener("click", (event) => {
 	const clickX = event.clientX - graphe.offsetLeft;
 	const clickY = event.clientY - graphe.offsetTop;
@@ -102,9 +109,20 @@ graphe.addEventListener("click", (event) => {
 	});
 });
 
-images.forEach(img => img.addEventListener("load", k3));
+const checkImagesLoaded = () => {
+	if (images.every(img => img.complete)) {
+		k5();
+	} else {
+		images.forEach(img => img.addEventListener("load", () => {
+			if (images.every(img => img.complete)) {
+				k5();
+			}
+		}));
+	}
+};
+
+checkImagesLoaded();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
 document.getElementById("valider").addEventListener("click", validateEdges);
 
-
-export { drawTheImage};
+export { drawTheImage, images};
