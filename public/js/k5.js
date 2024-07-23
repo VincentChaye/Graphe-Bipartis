@@ -34,8 +34,8 @@ const k5 = async () => {
 	edges.length = 0; 
 	drawTheImage();
 	
-	circleLine(125, 175, color, 5, 150);
-	circleLine(100, 550, color, 5, 150);
+	circleLine(125, 175, color, 5, 150,0);
+	circleLine(100, 550, color, 5, 150,0);
 
 	for (let i = 0; i < 5; i++) {
 		for (let j = 0; j < 5; j++) {
@@ -51,8 +51,8 @@ const redrawGraph = () => {
 	edges.forEach(edge => {
 		drawEdge(edge.x1, edge.y1, edge.x2, edge.y2, edge.color);
 	});
-	circleLine(100, 175, color, 5, 150);
-	circleLine(100, 525, color, 5, 150);
+	circleLine(100, 175, color, 5, 150,0);
+	circleLine(100, 525, color, 5, 150,0);
 };
 
 // Redessine le graphe après la réinitialisation des couleurs des arêtes

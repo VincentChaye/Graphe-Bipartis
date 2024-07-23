@@ -11,9 +11,9 @@ const drawCircle = (x, y, color) => {
 };
 
 // Ligne de sommets
-const circleLine = (x, y, color, k, spaceBetween) => {
+const circleLine = (x, y, color, k, spaceBetween, rotation) => {
 	for (let i = 0; i < k; i++) {
-		drawCircle(x + spaceBetween * i, y, color[i]);
+		drawCircle(x + spaceBetween * i, y + rotation *i, color[i]);
 	}
 };
 
@@ -28,5 +28,4 @@ const drawEdge = (x1, y1, x2, y2, color) => {
 };
 
 
-
-export { circleLine, drawEdge };
+export { circleLine, drawEdge};
