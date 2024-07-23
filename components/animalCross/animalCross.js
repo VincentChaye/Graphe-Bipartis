@@ -1,4 +1,4 @@
-import { k5, resetEdgesColor, edges, redrawGraph } from "../js/k5.js";
+import { k5, resetEdgesColor, edges, redrawGraph } from "../../public/js/k5.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
@@ -50,6 +50,38 @@ const drawTheImage = () => {
 		}
 	});
 };
+
+/* resoudre la triches possible de mettre toutes les arretes en vert */
+
+const verificationTricherie = () => {
+	let count = 0;
+	edges.forEach(edge => {
+		if (edge.color === "green") {
+			count++;
+		} 
+	});
+	if (count === 5) {
+		validateEdges();
+	} else if (count > 5) {
+
+		swal({
+			title: "Attention vous avez selectionné trop d'arretes !",
+			text: "Cliquer hors de la fenêtre pour fermer",
+			icon: "warning",
+			buttons: ["Réessayer"],
+		})
+			.then((menu) => {
+				if (menu) {
+					window.location.href = "../../index.html";
+				} else {
+					resetEdgesColor();
+				}
+			});
+	}else {
+		validateEdges();
+}};
+
+
 
 // Validation des arêtes
 const validateEdges = () => {
@@ -123,6 +155,6 @@ const checkImagesLoaded = () => {
 
 checkImagesLoaded();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
-document.getElementById("valider").addEventListener("click", validateEdges);
+document.getElementById("valider").addEventListener("click", verificationTricherie);
 
 export { drawTheImage, images};

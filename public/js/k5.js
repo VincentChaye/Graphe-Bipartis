@@ -10,8 +10,17 @@ const importDrawImageFunction = async () => {
 	const currentPage = window.location.pathname;
 
 	if (currentPage.includes('animalCross')) {
-		const module = await import('../animalCross/animalCross.js');
+		const module = await import('../../components/animalCross/animalCross.js');
 		drawTheImage = module.drawTheImage;
+
+	} else if (currentPage.includes('projecteurs')) {
+		const module = await import('../../components/projecteurs/projecteurs.js');
+		drawTheImage = module.drawTheImage;
+	
+	} else if (currentPage.includes('asterix')) {
+		const module = await import('../../components/Asterix/asterix.js');
+		drawTheImage = module.drawTheImage;
+
 	} else {
 		console.error('No matching page for drawTheImage function import');
 	}

@@ -73,45 +73,54 @@ img:hover {
 /* Bar de difficulté */
 
 
-  
-  .progressbar-wrapper {
+
+.progressbar-wrapper {
     background-color: #dfe6e9;
     color: white;
     border-radius: 15px;
     width: 100%;
     margin-bottom: 5rem;
-  }
-  
-  .progressbar {
+}
+
+.progressbar {
     background-color: var(--progress);
     color: white;
     padding: 0.3rem;
     text-align: right;
     font-size: 1rem;
-    border-radius: 15px;x
-  }
-  
-  .progressbar[title="easy"] {
-     background-color: lightgreen;
-  }
-  
-  .progressbar[title="middle"] {
-     background-color: orange;
-  }
+    border-radius: 15px;
+    x
+}
 
-    .progressbar[title="hard"] {
-        background-color: #d63031;
-    }
+.progressbar[title="easy"] {
+    background-color: lightgreen;
+}
+
+.progressbar[title="middle"] {
+    background-color: orange;
+}
+
+.progressbar[title="hard80"] {
+    background-color: #d63031;
+}
+
+.progressbar[title="hard"] {
+    background-color: #d63031;
+}
 
 
-    .easy{
-        width: 20%;
-    }
+.easy {
+    width: 20%;
+}
 
-    .middle{
-        width: 50%;
-    }
+.middle {
+    width: 50%;
+}
 
-    .hard{
-        width: 100%;
-    }
+.hard80 {
+    width: 80%;
+}
+
+.hard {
+    width: 100%;
+}

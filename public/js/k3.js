@@ -12,7 +12,7 @@ const importDrawImageFunction = async () => {
     const currentPage = window.location.pathname; 
 
     if (currentPage.includes('ririFifiLoulou')) {
-        const module = await import('../ririFifiLoulou/ririFifiLoulou.js');
+        const module = await import('../../components/ririFifiLoulou/ririFifiLoulou.js');
         drawTheImage = module.drawTheImage;
     //} else if (currentPage.includes('animalCross')) {
     //    const module = await import('../caca.js');

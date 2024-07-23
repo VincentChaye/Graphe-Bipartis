@@ -1,4 +1,4 @@
-import { k3, resetEdgesColor, edges, redrawGraph } from "../js/k3.js";
+import { k3, resetEdgesColor, edges, redrawGraph } from "../../public/js/k3.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
@@ -38,17 +38,47 @@ const drawTheImage = () => {
 	});
 };
 
+
+/* resoudre la triches possible de mettre toutes les arretes en vert */
+
+const verificationTricherie = () => {
+	let count = 0;
+	edges.forEach(edge => {
+		if (edge.color === "green") {
+			count++;
+		} 
+	});
+	if (count === 3) {
+		validateEdges();
+	} else if (count > 3) {
+
+		swal({
+			title: "Attention vous avez selectionné trop d'arretes !",
+			text: "Cliquer hors de la fenêtre pour fermer",
+			icon: "warning",
+			buttons: ["Réessayer"],
+		})
+			.then((menu) => {
+				if (menu) {
+					window.location.href = "../../index.html";
+				} else {
+					resetEdgesColor();
+				}
+			});
+	}else {
+		validateEdges();
+}};
+
+
+
+// Vérifie si toutes les arrêtes vertes autorisées sont présentes
+
 const validateEdges = () => {
-    // Arrêtes vertes autorisées (index)
     const authorizedGreenEdges = [2, 3, 7];
-    
-    // Vérifie si toutes les arrêtes vertes autorisées sont présentes
+
     const allAuthorizedEdgesGreen = authorizedGreenEdges.every(index => edges[index].color === "green");
 
-    // Vérifie si il y a d'autres arrêtes vertes non autorisées
-    const anyUnauthorizedGreenEdge = edges.some((edge, index) => edge.color === "green" && !authorizedGreenEdges.includes(index));
-
-    if (allAuthorizedEdgesGreen && !anyUnauthorizedGreenEdge) {
+    if (allAuthorizedEdgesGreen) {
         swal({
             title: "Bien joué !",
             text: "Voulez-vous rejouer ou passer à la suite ?",
@@ -119,6 +149,6 @@ const checkImagesLoaded = () => {
 
 checkImagesLoaded();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
-document.getElementById("valider").addEventListener("click", validateEdges);
+document.getElementById("valider").addEventListener("click", verificationTricherie);
 
 export { drawTheImage };

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.9">
+	<title>RiriFifiLoulou</title>
+	<link rel="stylesheet" href="/components/ririFifiLoulou/ririFifiLoulou.css">
+	<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="module" src="/components/ririFifiLoulou/ririFifiLoulou.js"></script>
+</head>
+
+<body>
+	<div class="row">
+
+		<div class="col-3" id="consigne">
+			<h1>Jeu – A chacun son animal</h1>
+			<p>Relie Riri, Fifi et Loulou à leur animal préféré à l’aide des informations suivantes:</p>
+			<ul>
+				<li>L’animal préféré de Fifi miaule</li>
+				<li>L’animal préféré de Loulou n’a pas
+					de plumes.</li>
+
+			</ul>
+
+		</div>
+		<div class="col-6">
+			<canvas id="graphe" width="800" height="700"></canvas>
+		</div>
+		<div class="col-2" id="aideJeu">
+			<h5> cliquer sur les liens pour changer leur état : </h5>
+			<ul>
+				<li>
+					<redEdge>|</redEdge> La liaison n'existe pas
+				</li>
+				<li>
+					<greenEdge>|</greenEdge> La liaison existe
+				</li>
+				<li>
+					<greyEdge>|</greyEdge> Aucune information sur la liaison
+				</li>
+			</ul>
+			<div id="resultat">
+				<button type="button" class="btn btn-primary" id="valider">Valider</button>
+				<button type="button" class="btn btn-primary" id="recommencer">Recommencer</button>
+			</div>
+		</div>
+
+
+	</div>
+
+	</div>
+
+</body>
