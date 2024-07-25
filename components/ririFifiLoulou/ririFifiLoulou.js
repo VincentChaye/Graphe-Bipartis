@@ -121,7 +121,7 @@ graphe.addEventListener("click", (event) => {
 		const edgeLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 
 		// Vérifie si le point cliqué est proche de l'arête
-		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 1) {
+		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 0.1) {
 			if (edge.color === "grey") {
 				edge.color = "red";
 			} else if (edge.color === "red") {
@@ -147,8 +147,24 @@ const checkImagesLoaded = () => {
 	}
 };
 
+const retourMenu = () => {
+	swal({
+		title:"Voulez-vous retourner au Menu ?",
+		icon: "warning",
+		buttons: ["Non", "Oui"],
+	})
+	.then((menu) => {
+		if (menu) {
+			window.location.href = "../../index.html";
+		} else {
+		}
+	});
+};
+
+
 checkImagesLoaded();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
 document.getElementById("valider").addEventListener("click", verificationTricherie);
+document.getElementById("menu").addEventListener("click", retourMenu);
 
 export { drawTheImage };

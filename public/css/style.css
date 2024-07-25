@@ -10,39 +10,68 @@ body {
 .row {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center; /* Centrer les éléments horizontalement */
 }
 
 .col-12 {
     flex: 0 0 100%;
-}
-
-img {
-    height: auto;
-    box-shadow: 2px 3px 3px black;
-    border-radius: 10px;
-    background-color: #fff;
-    padding: 10px;
-}
-
-img:hover {
-    transform: scale(1.1);
-    transition: 0.5s;
-}
-
-#title {
-    box-shadow: 0px 0px 0.3125rem black;
-    border-radius: 0.625rem;
-    padding: 0.625rem;
-    font-size: 1.875rem;
-    margin-bottom: 6rem;
-    background-color: #fff;
-    text-align: center;
+    justify-content: center;
+    display: flex; /* Ajouter flex pour centrer le contenu */
 }
 
 .image-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px; /* Ajouter un espace entre les images */
+}
+
+.image-container img {
+    height: auto;
+    box-shadow: 2px 3px 3px black;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+    transition: transform 0.5s;
+}
+
+.image-container img:hover {
+    transform: scale(1.1);
+}
+
+.image-container h3 {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.625rem;
+    border-radius: 0.625rem;
+    box-shadow: 0px 0px 0.3125rem black;
+    width: 60%;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+    transition: font-size 0.5s , white-space 0.5s ease, overflow 0.5s ease, text-overflow 0.5s ease;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+.image-container h3:hover {
+    transition: 1s;
+    overflow: visible; 
+    text-overflow: clip; 
+    width: 100%;
+    
+}
+
+#title {
+    box-shadow: 0px 0px 0.3125rem black;
+    border-radius: 0.625rem;
+    padding: 0;
+    font-size: 2.1rem;
+    margin-bottom: 6rem;
+    background-color: #fff;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -67,12 +96,7 @@ img:hover {
     margin-left: 2rem;
 }
 
-
-
-
 /* Bar de difficulté */
-
-
 
 .progressbar-wrapper {
     background-color: #dfe6e9;
@@ -89,7 +113,6 @@ img:hover {
     text-align: right;
     font-size: 1rem;
     border-radius: 15px;
-    x
 }
 
 .progressbar[title="easy"] {
@@ -108,7 +131,6 @@ img:hover {
     background-color: #d63031;
 }
 
-
 .easy {
     width: 20%;
 }
@@ -124,3 +146,7 @@ img:hover {
 .hard {
     width: 100%;
 }
+
+
+
+

@@ -84,7 +84,7 @@ const verificationTricherie = () => {
 
 // Validation des arêtes
 const validateEdges = () => {
-	if (edges[2].color === "green" && edges[3].color === "green" && edges[7].color === "green" && edges[10].color === "green" && edges[14].color === "green" && edges[15].color === "green" && edges[20].color === "green" && edges[21].color === "green" && edges[25].color === "green") {
+	if (edges[2].color === "green" && edges[3].color === "green" && edges[7].color === "green" && edges[10].color === "green" && edges[12].color === "green" && edges[17].color === "green" && edges[18].color === "green" && edges[23].color === "green" && edges[25].color === "green") {
 		swal({
 			title: "Bien joué !",
 			text: "Voulez-vous rejouer ou passer à la suite ?",
@@ -128,7 +128,7 @@ graphe.addEventListener("click", (event) => {
 		const edgeLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 
 		// Vérifie si le point cliqué est proche de l'arête
-		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 1) {
+		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 0.1) {
 			if (edge.color === "grey") {
 				edge.color = "red";
 			} else if (edge.color === "red") {
@@ -154,9 +154,25 @@ const checkImagesLoaded = () => {
 };
 
 
+const retourMenu = () => {
+	swal({
+		title:"Voulez-vous retourner au Menu ?",
+		icon: "warning",
+		buttons: ["Non", "Oui"],
+	})
+	.then((menu) => {
+		if (menu) {
+			window.location.href = "../../index.html";
+		} else {
+		}
+	});
+};
+
+
 checkImagesLoaded();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
 document.getElementById("valider").addEventListener("click", verificationTricherie);
+document.getElementById("menu").addEventListener("click", retourMenu);
 console.log(edges);
 
 export {  drawTheImage,  images};
