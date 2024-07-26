@@ -10,14 +10,31 @@ body {
 .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centrer les éléments horizontalement */
-}
+    justify-content: center; 
 
 .col-12 {
     flex: 0 0 100%;
     justify-content: center;
-    display: flex; /* Ajouter flex pour centrer le contenu */
+    display: flex; 
 }
+
+
+/* recherche specifique */
+
+
+#itemSelector{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    width: 200px;
+}
+
+
+
+
+
+
+
 
 .image-container {
     display: flex;
