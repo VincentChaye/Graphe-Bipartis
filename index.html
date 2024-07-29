@@ -11,24 +11,30 @@
 
 <body>
 	<div class="container text-center">
-		<div class="row justify-content-start">x
+		<div class="row justify-content-start">
 			<div class="col-12" id="title">
 				<h1>Puzzle partitionné</h1>
 			</div>
-
-			<div class="col-12" class="select">
-				<select id="itemSelector" multiple>
-					<option value="hard"> difficile </option>
-					<option value="middle">moyen</option>
-					<option value="easy">facile</option>
-					<option value="all">tous</option>
-					<option value="bipartie">bipartie</option>
-				</select>
+			<div class="row" id="choice">
+				<div class="col-12">
+					<label class="label" for="itemSelector">
+						Filtre de recherche :
+					</label>
+				</div>
+				<div class="row" id="select">
+					<select id="itemSelector">
+						<option value="all">tous</option>
+						<option value="easy">facile</option>
+						<option value="middle">moyen</option>
+						<option value="hard"> difficile </option>
+						<option value="bipartie">bipartie</option>
+						<option value="tripartie">tripartie</option>
+					</select>
+				</div>
 			</div>
-
 			<div class="col-12 level ligne">
 
-				<div class="image-container" id="easy">
+				<div class="image-container bipartie" id="easy">
 					<h3>Riri Fifi et Loulou</h3>
 					<a href="/components/ririFifiLoulou/ririFifiLoulou.html"><img src="/public/img/rirififiloulou.png"
 							alt="riri Fifi et Loulou"></a>
@@ -38,7 +44,7 @@
 					</div>
 				</div>
 
-				<div class="image-container" id="easy">
+				<div class="image-container bipartie" id="easy">
 					<h3>La niche</h3>
 					<a href="/components/niche/niche.html"><img src="/public/img/grapheNiche.png"
 							alt="riri Fifi et Loulou"></a>
@@ -48,7 +54,7 @@
 					</div>
 				</div>
 
-				<div class="image-container" id="middle">
+				<div class="image-container bipartie" id="middle">
 					<h3>Projecteurs</h3>
 					<a href="/components/projecteurs/projecteurs.html"><img src="/public/img/grapheProjecteurs.png"
 							alt="projecteurs"></a>
@@ -58,7 +64,7 @@
 					</div>
 				</div>
 
-				<div class="image-container" id="middle">
+				<div class="image-container bipartie" id="middle">
 					<h3>Asterix</h3>
 					<a href="/components/Asterix/asterix.html"><img src="/public/img/grapheAsterix.png"
 							alt="asterix"></a>
@@ -68,7 +74,7 @@
 					</div>
 				</div>
 
-				<div class="image-container" id="hard">
+				<div class="image-container bipartie" id="hard">
 					<h3>Animal Cross</h3>
 					<a href="/components/animalCross/animalCross.html"><img src="/public/img/animalCross.png"
 							alt="animalCross"></a>
@@ -79,7 +85,7 @@
 
 				</div>
 
-				<div class="image-container" id="hard">
+				<div class="image-container tripartie" id="hard">
 					<h3>Les motos</h3>
 					<a href="/components/motos/motos.html"><img src="/public/img/grapheMotos.png" alt="motos"></a>
 					<h2>6</h2>

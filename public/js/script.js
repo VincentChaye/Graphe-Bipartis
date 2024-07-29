@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const itemSelector = document.getElementById('itemSelector');
     const items = document.querySelectorAll('.image-container');
+    const bipartie = document.querySelectorAll('.bipartie');
 
 
     items.forEach(item => item.style.display = 'block');
@@ -35,6 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             }else if (selectedValue === 'all'){
                 item.style.display = 'block';
+            
+            } else if (selectedValue === 'bipartie') {
+                item.style.display = item.classList.contains('bipartie') ? 'block' : 'none';
+
+            } else if (selectedValue === 'tripartie') {
+                item.style.display = item.classList.contains('tripartie') ? 'block' : 'none';
             
             }else{
                 item.style.display = 'none';
