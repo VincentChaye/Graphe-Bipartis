@@ -1,0 +1,15 @@
+- Quand on ouvre la page lancement du tutoriel 
+
+présentation du personnage de TN
+
+expliquation des arretes et des sommets 
+
+explication des differents boutons
+
+but du jeu 
+
+niveau de difficulté 
+
+maintenant c'est a l'utilisateur de jouer
+
+( mettre au début de chaque niveau une pop up explicative du niveau en demandant d'aidé les personnages du niveau )

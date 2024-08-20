@@ -17,6 +17,9 @@ const importDrawImageFunction = async () => {
     } else if (currentPage.includes('niche')) {
         const module = await import('../../components/niche/niche.js');
         drawTheImage = module.drawTheImage;
+    } else if (currentPage.includes('tutorial')) {
+        const module = await import('../../components/tutorial/tutorial.js');
+        drawTheImage = module.drawTheImage;
     } else {
         console.error('No matching page for drawTheImage function import');
     }
@@ -55,6 +58,7 @@ const redrawGraph = () => {
 const resetEdgesColor = () => {
     edges.forEach(edge => {
         edge.color = "grey";
+        edge.largeur = 4;
     });
     redrawGraph();
 };
