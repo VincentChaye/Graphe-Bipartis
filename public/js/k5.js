@@ -39,7 +39,7 @@ const k5 = async () => {
 
 	for (let i = 0; i < 5; i++) {
 		for (let j = 0; j < 5; j++) {
-			edges.push({ x1: 100 + 150 * i, y1: 175, x2: 100 + 150 * j, y2: 525, color: "grey" });
+			edges.push({ x1: 100 + 150 * i, y1: 175, x2: 100 + 150 * j, y2: 525, color: "grey", largeur: 4 });
 		}
 	}
 	redrawGraph(); // Dessine le graphe initial
@@ -49,7 +49,7 @@ const redrawGraph = () => {
 	ctx.clearRect(0, 0, graphe.width, graphe.height);
 	if (drawTheImage) drawTheImage(); 
 	edges.forEach(edge => {
-		drawEdge(edge.x1, edge.y1, edge.x2, edge.y2, edge.color);
+		drawEdge(edge.x1, edge.y1, edge.x2, edge.y2, edge.color, edge.largeur);
 	});
 	circleLine(100, 175, color, 5, 150,0);
 	circleLine(100, 525, color, 5, 150,0);

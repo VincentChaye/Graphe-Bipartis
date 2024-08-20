@@ -18,12 +18,13 @@ const circleLine = (x, y, color, k, spaceBetween, rotation) => {
 };
 
 // Dessine une arête
-const drawEdge = (x1, y1, x2, y2, color) => {
+const drawEdge = (x1, y1, x2, y2, color, largeur) => {
 	ctx.beginPath();
 	ctx.lineWidth = "4"; // Augmente l'épaisseur des arêtes
 	ctx.moveTo(x1, y1);
 	ctx.lineTo(x2, y2);
 	ctx.strokeStyle = color;
+	ctx.lineWidth = largeur;
 	ctx.stroke();
 };
 

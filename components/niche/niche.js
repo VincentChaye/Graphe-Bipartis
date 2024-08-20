@@ -124,10 +124,13 @@ graphe.addEventListener("click", (event) => {
 		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 0.1) {
 			if (edge.color === "grey") {
 				edge.color = "red";
+				edge.largeur = 6;
 			} else if (edge.color === "red") {
 				edge.color = "green";
+				edge.largeur = 8;
 			} else if (edge.color === "green") {
 				edge.color = "grey";
+				edge.largeur = 4;
 			}
 			redrawGraph();
 		}

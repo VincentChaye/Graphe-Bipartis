@@ -32,9 +32,9 @@ const k3 = async () => {
     circleLine(200, 250, color, 3, 200,0);
     circleLine(200, 450, color, 3, 200,0);
     for (let i = 0; i < 3; i++) {
-        edges.push({ x1: 200 + 200 * i, y1: 250, x2: 200, y2: 450, color: "grey" });
-        edges.push({ x1: 200 + 200 * i, y1: 250, x2: 400, y2: 450, color: "grey" });
-        edges.push({ x1: 200 + 200 * i, y1: 250, x2: 600, y2: 450, color: "grey" });
+        edges.push({ x1: 200 + 200 * i, y1: 250, x2: 200, y2: 450, color: "grey", largeur: 4 });
+        edges.push({ x1: 200 + 200 * i, y1: 250, x2: 400, y2: 450, color: "grey", largeur: 4});
+        edges.push({ x1: 200 + 200 * i, y1: 250, x2: 600, y2: 450, color: "grey", largeur: 4 });
     }
     redrawGraph(); 
 };
@@ -44,7 +44,7 @@ const redrawGraph = () => {
     ctx.clearRect(0, 0, graphe.width, graphe.height);
     if (drawTheImage) drawTheImage(); 
     edges.forEach(edge => {
-        drawEdge(edge.x1, edge.y1, edge.x2, edge.y2, edge.color);
+        drawEdge(edge.x1, edge.y1, edge.x2, edge.y2, edge.color, edge.largeur);
     });
     circleLine(200, 250, color, 3, 200,0);
     circleLine(200, 450, color, 3, 200,0);

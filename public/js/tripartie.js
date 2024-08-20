@@ -40,20 +40,20 @@ const tripartie = async () => {
 	circleLine(600, 600, color, 3, 50,-120);
 
 	for (let i = 0; i < 3; i++) {
-        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 100, y2: 350, color: "grey" });
-        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 150, y2: 475, color: "grey" });
-        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 200, y2: 600, color: "grey" });
+        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 100, y2: 350, color: "grey", largeur: 4 });
+        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 150, y2: 475, color: "grey", largeur: 4 });
+        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 200, y2: 600, color: "grey", largeur: 4 });
     }
 	for (let i = 0; i < 3; i++) {
-        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 700, y2: 350, color: "grey" });
-        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 650, y2: 475, color: "grey" });
-        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 600, y2: 600, color: "grey" });
+        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 700, y2: 350, color: "grey", largeur: 4 });
+        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 650, y2: 475, color: "grey", largeur: 4 });
+        edges.push({ x1: 250 + 150 * i, y1: 100, x2: 600, y2: 600, color: "grey", largeur: 4 });
     }
 
 	for (let i = 0; i < 3; i++) {
-        edges.push({ x1: 100 + 50 * i, y1: 350 + 125 * i, x2: 700, y2: 350, color: "grey" });
-        edges.push({ x1: 100 + 50 * i, y1: 350 + 125 * i, x2: 650, y2: 475, color: "grey" });
-        edges.push({ x1: 100 + 50 * i, y1: 350 + 125 * i, x2: 600, y2: 600, color: "grey" });
+        edges.push({ x1: 100 + 50 * i, y1: 350 + 125 * i, x2: 700, y2: 350, color: "grey", largeur: 4 });
+        edges.push({ x1: 100 + 50 * i, y1: 350 + 125 * i, x2: 650, y2: 475, color: "grey", largeur: 4 });
+        edges.push({ x1: 100 + 50 * i, y1: 350 + 125 * i, x2: 600, y2: 600, color: "grey", largeur: 4 });
     }
 
 
@@ -66,7 +66,7 @@ const redrawGraph = () => {
 	ctx.clearRect(0, 0, graphe.width, graphe.height);
 	if (drawTheImage) drawTheImage(); 
 	edges.forEach(edge => {
-		drawEdge(edge.x1, edge.y1, edge.x2, edge.y2, edge.color);
+		drawEdge(edge.x1, edge.y1, edge.x2, edge.y2, edge.color, edge.largeur);
 	});
 	
 	circleLine(250, 100, color, 3, 150,0);
