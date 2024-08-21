@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .custom-alert {
     position: fixed;
+    font-family: 'Poppins', sans-serif;
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #007bff;
-    color: white;
+    background-color: rgba(255 ,255 ,255 ,0.95 ); ;
+    color: #007bff ;
     padding: 20px;
     border-radius: 10px;
+    border: 2px solid #007bff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     z-index: 1050;
     text-align: center;
@@ -16,11 +20,18 @@
 .custom-alert button {
     background-color: white;
     color: #007bff;
-    border: none;
+    border: 1px solid #007bff;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 10px;
+    position: relative;
+    top: 80%;
+    left: -18%;
+}
+
+#alertMessage {
+    font-size: 50px;
+
 }
 
 .hidden {

@@ -1,22 +1,3 @@
-import { tutorial } from './tutorial.js';
-
-const showAlert = (message, position = { top: '30%', left: '50%' }, size = { width: '300px', height: 'auto' }) => {
-    const alertBox = document.getElementById('customAlert');
-    const alertMessage = document.getElementById('alertMessage');
-
-    alertMessage.textContent = message;
-    alertBox.style.top = position.top;
-    alertBox.style.left = position.left;
-    alertBox.style.width = size.width;
-    alertBox.style.height = size.height;
-    alertBox.classList.remove('hidden');
-}
-
-const closeAlert = () =>{
-    document.getElementById('customAlert').classList.add('hidden');
-}
-
-
 const alert1 = (message, position = { top: '50%', left: '50%' }, size = { width: '500px', height: 'auto' }) => {
     const alertBox = document.getElementById('customAlert');
     const alertMessage = document.getElementById('alertMessage');
@@ -29,36 +10,51 @@ const alert1 = (message, position = { top: '50%', left: '50%' }, size = { width:
     alertBox.classList.remove('hidden');
 }
 
-const alert2 = (message, position = { top: '50%', left: '50%' }, size = { width: '500px', height: 'auto' }) => {
-	const alertBox = document.getElementById('customAlert');
-	const alertMessage = document.getElementById('alertMessage');
+let memory = 0;
 
-	alertMessage.textContent = message;
-	alertBox.style.top = position.top;
-	alertBox.style.left = position.left;
-	alertBox.style.width = size.width;
-	alertBox.style.height = size.height;
-	alertBox.classList.remove('hidden');
+const closeAlert = () => {
+    document.getElementById('customAlert').classList.add('hidden');
 }
 
-const alert3 = (message, position = { top: '50%', left: '50%' }, size = { width: '500px', height: 'auto' }) => {
-	const alertBox = document.getElementById('customAlert');
-	const alertMessage = document.getElementById('alertMessage');
+const alert2 = () => {
+    const alertBox = document.getElementById('customAlert');
+    const alertMessage = document.getElementById('alertMessage');
 
-	alertMessage.textContent = message;
-	alertBox.style.top = position.top;
-	alertBox.style.left = position.left;
-	alertBox.style.width = size.width;
-	alertBox.style.height = size.height;
-	alertBox.classList.remove('hidden');
+    alertMessage.textContent = 'caca';
+    alertBox.style.top = '10%';
+    alertBox.style.left = '20%';
+    alertBox.style.width = '500px';
+    alertBox.style.height = 'auto';
+
+    memory = 1;
+}
+
+const alert3 = () => {
+    const alertBox = document.getElementById('customAlert');
+    const alertMessage = document.getElementById('alertMessage');
+
+    alertMessage.textContent = 'pipi';
+    alertBox.style.top = '10%';
+    alertBox.style.left = '80%';
+    alertBox.style.width = '500px';
+    alertBox.style.height = 'auto';     
+    memory = 2;
 }
 
 
-// Exemple d'utilisation
-//document.getElementById('valider').addEventListener('click', () => {
-//    showAlert('Votre réponse a été enregistrée.');
-//});
+const handleAlert = () => {
+    if (memory === 0) {
+        alert2();
+    } else if (memory === 1) {
+        alert3();
+    }else if (memory === 2) {
+        closeAlert();
+    }
+}
 
-//document.getElementById('closeAlertButton').addEventListener('click', closeAlert);
-tutorial();
+// Exemple
+alert1('Bienvenue \n \n Nous allons ensemble apprendre à résoudre des problèmes logiques en utilisant des graphes !'  , { top: '50%', left: '50%' }, { width: '800px', height: '500px' });
+
+document.getElementById('closeAlertButton').addEventListener('click', handleAlert);
+
 export { alert1, closeAlert };
