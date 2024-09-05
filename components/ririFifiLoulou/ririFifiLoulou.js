@@ -53,7 +53,7 @@ const verificationTricherie = () => {
 	} else if (count > 3) {
 
 		swal({
-			title: "Attention vous avez selectionné trop d'arretes !",
+			title: "Attention vous avez selectionné trop d'arêtes !",
 			text: "Cliquer hors de la fenêtre pour fermer",
 			icon: "warning",
 			buttons: ["Réessayer"],
@@ -123,15 +123,11 @@ graphe.addEventListener("click", (event) => {
 		// Vérifie si le point cliqué est proche de l'arête
 		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 0.1) {
 			if (edge.color === "grey") {
-				edge.color = "red";
-				edge.largeur = 6;
-				console.log(edge);
-			} else if (edge.color === "red") {
 				edge.color = "green";
-				edge.largeur = 8;
-			} else if (edge.color === "green") {
+			} else if (edge.color === "red") {
 				edge.color = "grey";
-				edge.largeur = 4;
+			} else if (edge.color === "green") {
+				edge.color = "red";
 			}
 			redrawGraph();
 		}

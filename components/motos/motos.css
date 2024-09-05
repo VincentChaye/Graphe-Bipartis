@@ -44,6 +44,8 @@ canvas {
 	border: 2px solid black;
 	border-radius: 10px;
 	box-shadow: 0px 0px 5px black;
+	background-color: lightyellow;
+
 }
 
 /* Aide au jeu */

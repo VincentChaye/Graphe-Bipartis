@@ -51,6 +51,8 @@ canvas {
 	border: 2px solid black;
 	border-radius: 10px;
 	box-shadow: 0px 0px 5px black;
+	background-color: lightyellow;
+
 }
 
 /* Aide au jeu */
@@ -106,5 +108,5 @@ redEdge {
 
 #resultat button {
 	margin-left: 10px;
-	margin-top: 20px;
+	margin-top: 40px;
 }

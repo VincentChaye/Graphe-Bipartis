@@ -1,7 +1,9 @@
 import { circleLine, drawEdge } from "/public/js/grapheCreation.js";
 
 const edges = [];
-const color = ["red", "blue", "green", "yellow", "purple"];
+let color = ["lightgrey", "lightgrey", "lightgrey", "lightgrey", "lightgrey"];
+let color1 = ["red", "blue", "green", "yellow", "purple"];
+
 const ctx = graphe.getContext('2d');
 
 let drawTheImage;
@@ -16,6 +18,7 @@ const importDrawImageFunction = async () => {
 	} else if (currentPage.includes('projecteurs')) {
 		const module = await import('../../components/projecteurs/projecteurs.js');
 		drawTheImage = module.drawTheImage;
+		color = color1;
 	
 	} else if (currentPage.includes('asterix')) {
 		const module = await import('../../components/Asterix/asterix.js');
@@ -39,7 +42,7 @@ const k5 = async () => {
 
 	for (let i = 0; i < 5; i++) {
 		for (let j = 0; j < 5; j++) {
-			edges.push({ x1: 100 + 150 * i, y1: 175, x2: 100 + 150 * j, y2: 525, color: "grey", largeur: 4 });
+			edges.push({ x1: 100 + 150 * i, y1: 175, x2: 100 + 150 * j, y2: 525, color: "grey"});
 		}
 	}
 	redrawGraph(); // Dessine le graphe initial
@@ -63,4 +66,4 @@ const resetEdgesColor = () => {
 	redrawGraph();
 };
 
-export { k5, resetEdgesColor, edges, redrawGraph };
+export { k5, resetEdgesColor, edges, redrawGraph,color };
