@@ -15,17 +15,19 @@ const alert1 = (message, position = { top: '50%', left: '50%' }, size = { width:
 
 const closeAlert = () => {
     document.getElementById('customAlert').classList.add('hidden');
+    localStorage.clear();
 }
 
 // Exemple d'utilisation avec un titre et un texte
 
-if localStorage.getItem('Tutorial1') === null {
-    alert1(title  + text, { top: '50%', left: '50%' }, { width: '800px', height: '500px' });
+if ( localStorage.getItem('Tutorial1') === null ) {
     const title = '<h2 style="font-family: Arial, sans-serif; font-weight: bold; font-size: 50px; margin-bottom: 10px;">Bienvenue</h2>';
     const text = '<p style="font-family: Verdana, sans-serif; font-size: 20px; padding-top: 50px;  ">Nous allons ensemble apprendre à résoudre des problèmes logiques en utilisant des graphes !</p>';
-    
-    localStorage.setItem('Tutorial1');
+    alert1(title  + text, { top: '50%', left: '50%' }, { width: '800px', height: '500px' }); 
+    localStorage.setItem('Tutorial1', 'true');
 }
+
+
 
 
 
