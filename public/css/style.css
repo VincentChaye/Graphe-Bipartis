@@ -6,6 +6,7 @@ body {
     margin: 0rem;
     padding: 20px;
     color: #fff;
+    /*cursor: none;*/
 }
 
 .row {
@@ -78,13 +79,12 @@ body {
     padding: 0.625rem;
     border-radius: 0.625rem;
     box-shadow: 4px 4px 8px rgba(6,147,227, 0.3);
-    width: 60%;
+    width: 100%;
     text-transform: capitalize;
     margin-bottom: 1rem;
     transition: font-size 0.5s , white-space 0.5s ease, overflow 0.5s ease, text-overflow 0.5s ease;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+   
 }
 
 .image-container h3:hover {
@@ -216,3 +216,17 @@ body {
     margin-bottom: 1.5rem;
     box-shadow: 4px 4px 8px rgba(6,147,227, 0.3);
 }
+
+
+/*mise en place des traces de la souris */
+
+/*
+.trace {
+    position: absolute;
+    width: 20px; 
+    height: 20px;
+    border-radius: 50%;
+    background-color: #0693e3;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+  }*/
