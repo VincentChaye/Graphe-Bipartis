@@ -16,6 +16,10 @@ const img6 = new Image();
 img6.src = "/public/img/peroquet.png";
 const images = [img1, img2, img3, img4, img5, img6];
 
+let canvasWidth = graphe.width;
+let canvasHeight = graphe.height;
+let scale = 1; 
+
 // Intégration des images
 const drawTheImage = () => {
 	const positions = [
@@ -65,6 +69,20 @@ const verificationTricherie = () => {
 					resetEdgesColor();
 				}
 			});
+		} else if (count < 5) {
+			swal({
+				title: "Attention vous n'avez pas selectionné assez d'arêtes !",
+				text: "Cliquer hors de la fenêtre pour fermer",
+				icon: "warning",
+				buttons: ["Réessayer"],
+			})
+				.then((menu) => {
+					if (menu) {
+						window.location.href = "../../index.html";
+					} else {
+						resetEdgesColor();
+					}
+				});
 	}else {
 		validateEdges();
 }};
@@ -92,6 +110,8 @@ const validateEdges = () => {
                 resetEdgesColor();
             }
         });
+
+		
     } else {
         swal({
             title: "Dommage !",
@@ -121,7 +141,7 @@ graphe.addEventListener("click", (event) => {
 		const edgeLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 
 		// Vérifie si le point cliqué est proche de l'arête
-		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 0.1) {
+		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 0.1 ) {
 			if (edge.color === "grey") {
 				edge.color = "green";
 			} else if (edge.color === "red") {
@@ -161,10 +181,22 @@ const retourMenu = () => {
 	});
 };
 
+const canvasResponsive = () => {
+	const scaleFactor = Math.min(window.innerWidth / 800, window.innerHeight / 700);
+    graphe.width = 800 * scaleFactor;
+    graphe.height = 700 * scaleFactor;
+    scale = scaleFactor;
+    redrawGraph();
+};
+
 
 checkImagesLoaded();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
 document.getElementById("valider").addEventListener("click", verificationTricherie);
 document.getElementById("menu").addEventListener("click", retourMenu);
+window.addEventListener('resize', canvasResponsive);
+//canvasResponsive();
+
+
 
 export { drawTheImage };

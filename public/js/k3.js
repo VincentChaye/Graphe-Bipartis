@@ -63,4 +63,11 @@ const resetEdgesColor = () => {
     redrawGraph();
 };
 
+
+const canvasResponsive = () => {
+    graphe.width = window.innerWidth * 0.7;  // 70% of window width
+    graphe.height = window.innerHeight * 0.8; // 80% of window height
+    redrawGraph();
+};
+
 export { k3, resetEdgesColor, edges, redrawGraph };

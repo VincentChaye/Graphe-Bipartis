@@ -77,6 +77,23 @@ const verificationTricherie = () => {
 					resetEdgesColor();
 				}
 			});
+
+		} else if (count < 5) {
+
+			swal({
+				title: "Attention vous n'avez pas selectionné assez d'arêtes !",
+				text: "Cliquer hors de la fenêtre pour fermer",
+				icon: "warning",
+				buttons: ["Réessayer"],
+			})
+				.then((menu) => {
+					if (menu) {
+						window.location.href = "../../index.html";
+					} else {
+						resetEdgesColor();
+					}
+				});
+				
 	}else {
 		validateEdges();
 }};

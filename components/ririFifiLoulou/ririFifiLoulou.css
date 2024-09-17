@@ -45,8 +45,11 @@ canvas {
 	border-radius: 10px;
 	box-shadow: 0px 0px 5px black;
 	background-color: lightyellow;
-
+	/*display: block;
+	width: 100%; 
+    height: auto;*/
 }
+
 
 /* Aide au jeu */
 

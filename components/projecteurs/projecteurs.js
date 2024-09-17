@@ -4,36 +4,36 @@ const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
 
 const img1 = new Image();
-img1.src = "/public/img/projecteur.jpg";
+img1.src = "/public/img/projecteur.png";
 const img2 = new Image();
-img2.src = "/public/img/projecteur.jpg";
+img2.src = "/public/img/projecteur.png";
 const img3 = new Image();
-img3.src = "/public/img/projecteur.jpg";
+img3.src = "/public/img/projecteur.png";
 const img4 = new Image();
-img4.src = "/public/img/projecteur.jpg";
+img4.src = "/public/img/projecteur.png";
 const img5 = new Image();
-img5.src = "/public/img/projecteur.jpg";
+img5.src = "/public/img/projecteur.png";
 const img6 = new Image();
-img6.src = "/public/img/projecteur.jpg";
+img6.src = "/public/img/interrupteur.jpg";
 const img7 = new Image();
-img7.src = "/public/img/projecteur.jpg";
+img7.src = "/public/img/interrupteur.jpg";
 const img8 = new Image();
-img8.src = "/public/img/projecteur.jpg";
+img8.src = "/public/img/interrupteur.jpg";
 const img9 = new Image();
-img9.src = "/public/img/projecteur.jpg";
+img9.src = "/public/img/interrupteur.jpg";
 const img10 = new Image();
-img10.src = "/public/img/projecteur.jpg";
+img10.src = "/public/img/interrupteur.jpg";
 
 const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10	];
 
 // Intégration des images
 const drawTheImage = () => {
 	const positions = [
-		{ x: 50, y: 50 },
-		{ x: 200, y: 50 },
-		{ x: 350, y: 50 },
-		{ x: 500, y: 50 },
-		{ x: 650, y: 50 },
+		{ x: 50, y: 15 },
+		{ x: 200, y: 15 },
+		{ x: 350, y: 15 },
+		{ x: 500, y: 15 },
+		{ x: 650, y: 15 },
 		{ x: 50, y: 550 },
 		{ x: 200, y: 550 },
 		{ x: 350, y: 550 },
@@ -79,6 +79,24 @@ const verificationTricherie = () => {
 					resetEdgesColor();
 				}
 			});
+
+		} else if (count < 5) {
+
+			swal({
+				title: "Attention vous n'avez pas selectionné assez d'arêtes !",
+				text: "Cliquer hors de la fenêtre pour fermer",
+				icon: "warning",
+				buttons: ["Réessayer"],
+			})
+				.then((menu) => {
+					if (menu) {
+						window.location.href = "../../index.html";
+					} else {
+						resetEdgesColor();
+					}
+				});
+
+
 	}else {
 		validateEdges();
 }};
