@@ -164,6 +164,7 @@ const retourMenu = () => {
 	});
 };
 
+
 checkImagesLoaded();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
 document.getElementById("valider").addEventListener("click", verificationTricherie);
