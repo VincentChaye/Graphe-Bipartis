@@ -21,8 +21,6 @@ const circleLine = (x, y, color, k, spaceBetween, rotation) => {
 const drawEdge = (x1, y1, x2, y2, color, largeur) => {
 	ctx.beginPath();
 
-	
-
 	if (color === "grey") {
 		ctx.setLineDash([8,5]);
 		ctx.lineWidth = "4";
