@@ -142,25 +142,25 @@ body {
     background-color: var(--progress);
     color: white;
     padding: 0.3rem;
-    text-align: right;
+    text-align: center;
     font-size: 1rem;
     border-radius: 15px;
 }
 
 .progressbar[title="easy"] {
-    background-color: #00d084;
+    background-color: #008000;
 }
 
 .progressbar[title="middle"] {
-    background-color: #ff6900;
-}
-
-.progressbar[title="hard80"] {
-    background-color: #cf2e2e;
+    background-color: #00008b;
 }
 
 .progressbar[title="hard"] {
-    background-color: #cf2e2e;
+    background-color: #ff0000;
+}
+
+.progressbar[title="hard++"] {
+    background-color: #000000;
 }
 
 .easy {
@@ -171,11 +171,11 @@ body {
     width: 100%;
 }
 
-.hard80 {
+.hard {
     width: 100%;
 }
 
-.hard {
+.hard\+\+ {
     width: 100%;
 }
 
