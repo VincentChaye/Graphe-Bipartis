@@ -6,6 +6,8 @@ const drawCircle = (x, y, color) => {
 	ctx.lineWidth = "2";
 	ctx.fillStyle = color;
 	ctx.arc(x, y, 20, 0, 2 * Math.PI);
+	ctx.strokeStyle = "black";
+	ctx.setLineDash([]);
 	ctx.stroke();
 	ctx.fill();
 };

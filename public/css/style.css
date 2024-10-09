@@ -41,12 +41,7 @@ body {
     box-shadow: 4px 4px 8px rgba(6,147,227, 0.3);
     border-radius: 10px;
     border: 1px solid #0693e3 ;
-    margin: 60px;
-    
-    
-    
-    
-    
+    margin: 60px;    
 }
 
 /* les differents niveaux*/
@@ -54,15 +49,20 @@ body {
 .image-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px; /* Ajouter un espace entre les images */
+    align-items: center; 
+    margin-bottom: 20px; 
+    justify-content: center;
+    text-align: center;
 }
+
 
 .image-container img {
     height: auto;
     box-shadow: 4px 4px 8px rgba(6,147,227, 0.3);
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.1);
+    display: block;
+    margin: 0 auto;
     padding: 10px;
     transition: transform 0.5s;
 }

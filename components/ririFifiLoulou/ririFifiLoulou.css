@@ -99,10 +99,37 @@ redEdge {
 #resultat {
 	margin-left: 20px;
 	padding: 10px;
-	
 }
 
 #resultat button {
 	margin-left: 10px;
 	margin-top: 20px;
+}
+
+
+@media (max-width: 700px) {
+	#consigne h1 {
+		font-size: 30px;
+	}
+	#consigne p,
+	#consigne ul {
+		font-size: 20px;
+	}
+	ul li {
+		margin-bottom: 10px;
+	}
+	canvas {
+		width: 50%;
+		height: auto;
+	}
+	#aideJeu h5 {
+		font-size: 20px;
+	}
+	#aideJeu ul {
+		font-size: 20px;
+	}
+	#resultat {
+		display: none;
+		visibility: hidden;
+	}
 }
