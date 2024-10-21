@@ -13,40 +13,42 @@
 </head>
 
 <body>
-	<div class="row">
+	<div class="container">
+		<div class="row">
 
-		<div class="col-3" id="consigne">
-			<h1>Jeu – A chacun son animal</h1>
-			<p>Relie Riri, Fifi et Loulou à leur animal préféré à l’aide des informations suivantes:</p>
-			<ul>
-				<li>L’animal préféré de Fifi miaule</li>
-				<li>L’animal préféré de Loulou n’a pas
-					de plumes.</li>
-
-			</ul>
-
-		</div>
-		<div class="col-6">
-			<canvas id="graphe" width="800" height="700"></canvas>
-		</div>
-		<div class="col-3">
-			<div class="col-2" id="aideJeu">
-				<h5> cliquer sur les liens pour changer leur état : </h5>
+			<div class="col-3" id="consigne">
+				<h1>Jeu – A chacun son animal</h1>
+				<p>Relie Riri, Fifi et Loulou à leur animal préféré à l’aide des informations suivantes:</p>
 				<ul>
-					<li>
-						<redEdge>|</redEdge> La liaison n'existe pas
-					</li>
-					<li>
-						<greenEdge>|</greenEdge> La liaison existe
-					</li>
-					<li>
-						<greyEdge>|</greyEdge> Aucune information sur la liaison
-					</li>
+					<li>L’animal préféré de Fifi miaule</li>
+					<li>L’animal préféré de Loulou n’a pas
+						de plumes.</li>
+
 				</ul>
-				<div id="resultat">
-					<button type="button" class="btn btn-primary" id="valider">Valider</button>
-					<button type="button" class="btn btn-primary" id="recommencer">Recommencer</button>
-					<button type="button" class="btn btn-primary" id="menu">Menu</button>
+
+			</div>
+			<div class="col-5">
+				<canvas id="graphe" width="auto" height="auto"></canvas>
+			</div>
+			<div class="col-3">
+				<div class="col-2" id="aideJeu">
+					<h5> cliquer sur les liens pour changer leur état : </h5>
+					<ul>
+						<li>
+							<redEdge>|</redEdge> La liaison n'existe pas
+						</li>
+						<li>
+							<greenEdge>|</greenEdge> La liaison existe
+						</li>
+						<li>
+							<greyEdge>|</greyEdge> Aucune information sur la liaison
+						</li>
+					</ul>
+					<div id="resultat">
+						<button type="button" class="btn btn-primary" id="valider">Valider</button>
+						<button type="button" class="btn btn-primary" id="recommencer">Recommencer</button>
+						<button type="button" class="btn btn-primary" id="menu">Menu</button>
+					</div>
 				</div>
 			</div>
 		</div>

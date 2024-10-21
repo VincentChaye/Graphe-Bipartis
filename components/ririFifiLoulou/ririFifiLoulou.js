@@ -1,6 +1,8 @@
 import { k3, resetEdgesColor, edges, redrawGraph } from "../../public/js/k3.js";
 
 const graphe = document.querySelector('#graphe');
+let canvas = document.getElementById('responsive-canvas');
+
 const ctx = graphe.getContext('2d');
 const img1 = new Image();
 img1.src = "/public/img/riri.png";
@@ -190,11 +192,14 @@ const canvasResponsive = () => {
 };
 
 
+
 checkImagesLoaded();
+canvasResponsive();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
 document.getElementById("valider").addEventListener("click", verificationTricherie);
 document.getElementById("menu").addEventListener("click", retourMenu);
 window.addEventListener('resize', canvasResponsive);
+console.log(undiffined == null);
 //canvasResponsive();
 
 

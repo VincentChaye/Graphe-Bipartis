@@ -21,6 +21,11 @@ const importDrawImageFunction = async () => {
 	//	const module = await import('../../components/Asterix/asterix.js');
 	//	drawTheImage = module.drawTheImage;
 
+	} else if (currentPage.includes('hackers')) {
+		const module = await import('../../components/hackers/hackers.js');
+		drawTheImage = module.drawTheImage;
+	
+
 	} else {
 		console.error('No matching page for drawTheImage function import');
 	}
