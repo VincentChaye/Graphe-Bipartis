@@ -50,10 +50,11 @@ canvas {
 	box-shadow: 0px 0px 5px black;
 	background-color: lightyellow;
 	z-index: 1; 
-	width: 100%;
+	/*width: 100%;*/
 	position: relative;
-	right:50px;
 	cursor: crosshair;
+	left: 50%;
+	right: 50%;
 }
 
 

@@ -183,23 +183,22 @@ const retourMenu = () => {
 	});
 };
 
-const canvasResponsive = () => {
-	const scaleFactor = Math.min(window.innerWidth / 800, window.innerHeight / 700);
-    graphe.width = 800 * scaleFactor;
-    graphe.height = 700 * scaleFactor;
-    scale = scaleFactor;
-    redrawGraph();
-};
+//const canvasResponsive = () => {
+//	const scaleFactor = Math.min(window.innerWidth / 800, window.innerHeight / 700);
+//    graphe.width = 1000 * scaleFactor;
+//    graphe.height = 1000 * scaleFactor;
+//    scale = scaleFactor;
+//    redrawGraph();
+//};
 
 
 
 checkImagesLoaded();
-canvasResponsive();
+//canvasResponsive();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
 document.getElementById("valider").addEventListener("click", verificationTricherie);
 document.getElementById("menu").addEventListener("click", retourMenu);
-window.addEventListener('resize', canvasResponsive);
-console.log(undiffined == null);
+//window.addEventListener('resize', canvasResponsive);
 //canvasResponsive();
 
 
