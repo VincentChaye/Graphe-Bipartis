@@ -30,24 +30,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         items.forEach(item => {
             console.log(item.id);
-            if (selectedValue === item.id){
+            if (selectedValue === item.id) {
                 item.style.display = 'block';
-            
-            }else if (selectedValue === 'all'){
+
+            } else if (selectedValue === 'all') {
                 item.style.display = 'block';
-            
+
             } else if (selectedValue === 'bipartie') {
                 item.style.display = item.classList.contains('bipartie') ? 'block' : 'none';
 
             } else if (selectedValue === 'tripartie') {
                 item.style.display = item.classList.contains('tripartie') ? 'block' : 'none';
-            
-            }else{
+
+            } else {
                 item.style.display = 'none';
-            } 
+            }
         });
 
-});
+    });
 });
 
 
@@ -74,18 +74,10 @@ function updateInfo(index, value) {
 
 info.forEach((value, index) => {
     if (value === 1){
-        document.querySelectorAll(`.image-container:nth-of-type(${index+1}) p`).forEach(element => {
+        document.querySelectorAll(`.image-container:nth-of-type(${index + 1}) p`).forEach(element =>{
             element.style.display = 'flex';
             console.log(`info[${index}] = ${value}`);
-        }); 
-    
+        });
+    }});
 
-    }
-    console.log(`info[${index}] = ${value}`);
-});
-
-
-
-
-updateInfo(1, 0);
 export { updateInfo };
