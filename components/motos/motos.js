@@ -1,3 +1,4 @@
+import { updateInfo } from "../../public/js/script.js";
 import { tripartie, resetEdgesColor, edges, redrawGraph } from "../../public/js/tripartie.js";
 
 const graphe = document.querySelector('#graphe');
@@ -21,6 +22,8 @@ const img8 = new Image();
 img8.src = "/public/img/motoBernard.png";
 const img9 = new Image();
 img9.src = "/public/img/motoAndre.png";
+
+
 
 const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9	];
 
@@ -110,9 +113,9 @@ const validateEdges = () => {
 		})
 			.then((menu) => {
 				if (menu) {
+					updateInfo(5, 1);
 					window.location.href = "../../index.html";
 				} else {
-					resetEdgesColor();
 				}
 			});
 	

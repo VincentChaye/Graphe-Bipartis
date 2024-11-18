@@ -1,5 +1,5 @@
 import { k3, resetEdgesColor, edges, redrawGraph } from "../../public/js/k3.js";
-import { pastille } from "../../public/js/script.js";	
+import { updateInfo } from "../../public/js/script.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
@@ -18,9 +18,6 @@ const img6 = new Image();
 img6.src = "/public/img/peroquet.png";
 const images = [img1, img2, img3, img4, img5, img6];
 
-/* verifie si le niveau a deja été fait */
-
-let info1 = localStorage.getItem('info1') !== null ? parseInt(localStorage.getItem('info1')) : 0;
 
 
 // Intégration des images
@@ -108,10 +105,9 @@ const validateEdges = () => {
         })
         .then((menu) => {
             if (menu) {
+				updateInfo(0, 1);
                 window.location.href = "../../index.html";
-				localStorage.setItem('info1', 1);
             } else {
-                resetEdgesColor();
             }
         });
 
@@ -187,12 +183,6 @@ const retourMenu = () => {
 
 
 
-
-
-
-
-
-
 checkImagesLoaded();
 //canvasResponsive();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
@@ -204,4 +194,4 @@ document.getElementById("menu").addEventListener("click", retourMenu);
 
 
 
-export { drawTheImage, info1 };
+export { drawTheImage};

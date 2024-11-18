@@ -143,8 +143,20 @@ body {
 
 .info h2,
 .info p {
-    margin: 0; 
-    padding: 0; 
+    margin-top: 0.5rem; 
+    margin-bottom: 0.5rem;
+    padding: 0.1rem; 
+}
+
+.info p {
+    border: lightgrey solid 4px;
+    border-radius: 100%;
+    scale: 1.1;
+    background-color: white;
+    display: none;
+    color: green;
+    width: 1.3rem;
+    justify-content: center;
 }
 
 

@@ -1,4 +1,5 @@
 import { k5, resetEdgesColor, edges, redrawGraph } from "../../public/js/k5.js";
+import { updateInfo } from "../../public/js/script.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
@@ -22,6 +23,9 @@ const img9 = new Image();
 img9.src = "/public/img/sanglier.png";
 const img10 = new Image();
 img10.src = "/public/img/vase.png";
+
+
+
 
 const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
@@ -111,9 +115,9 @@ const validateEdges = () => {
 		})
 			.then((menu) => {
 				if (menu) {
+					updateInfo(3, 1);
 					window.location.href = "../../index.html";
 				} else {
-					resetEdgesColor();
 				}
 			});
 	} else {

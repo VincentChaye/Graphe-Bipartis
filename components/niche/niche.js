@@ -1,4 +1,5 @@
 import { k3, resetEdgesColor, edges, redrawGraph } from "../../public/js/k3.js";
+import { updateInfo } from "../../public/js/script.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
@@ -16,6 +17,8 @@ img5.src = "/public/img/niche1.png";
 const img6 = new Image();
 img6.src = "/public/img/niche2.png";
 const images = [img1, img2, img3, img4, img5, img6];
+
+
 
 
 // Intégration des images
@@ -106,9 +109,9 @@ const validateEdges = () => {
         })
         .then((menu) => {
             if (menu) {
+				updateInfo(1, 1);
                 window.location.href = "../../index.html";
             } else {
-                resetEdgesColor();
             }
         });
     } else {
@@ -186,4 +189,4 @@ document.getElementById("recommencer").addEventListener("click", resetEdgesColor
 document.getElementById("valider").addEventListener("click", verificationTricherie);
 document.getElementById("menu").addEventListener("click", retourMenu);
 
-export { drawTheImage };
+export { drawTheImage};

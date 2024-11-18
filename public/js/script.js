@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const resizeImages = () => {
         const images = document.querySelectorAll('.level img');
@@ -54,5 +53,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+let info = [0, 0, 0, 0, 0, 0];
+
+for (let i = 0; i < info.length; i++) {
+    const storedValue = localStorage.getItem(`info${i}`);
+    if (storedValue === '1') {
+        info[i] = 1;
+    }
+}
+
+// fonction pour changer la valeur de l'index de info
+function updateInfo(index, value) {
+    if (index >= 0 && index < info.length) {
+        info[index] = value;
+        localStorage.setItem(`info${index}`, value.toString());
+    }
+}
+
+/* Savoir si un niveau a deja été fait*/
+
+info.forEach((value, index) => {
+    if (value === 1){
+        document.querySelectorAll(`.image-container:nth-of-type(${index+1}) p`).forEach(element => {
+            element.style.display = 'flex';
+            console.log(`info[${index}] = ${value}`);
+        }); 
+    
+
+    }
+    console.log(`info[${index}] = ${value}`);
+});
 
 
+
+
+updateInfo(1, 0);
+export { updateInfo };
