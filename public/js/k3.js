@@ -1,4 +1,4 @@
-import { circleLine, drawEdge } from "/public/js/grapheCreation.js";
+import { circleLine, drawEdge, drawTransformedEdge } from "/public/js/grapheCreation.js";
 
 const edges = [];
 const color = ["lightgrey", "lightgrey", "lightgrey", "lightgrey", "lightgrey"];

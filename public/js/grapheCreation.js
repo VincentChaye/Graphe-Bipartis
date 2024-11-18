@@ -1,5 +1,9 @@
 const ctx = graphe.getContext('2d');
 
+let matrix = ctx.getTransform();	
+
+let QuotientWidht = matrix.a;
+let QuotientHeight = matrix.d;
 
 // Crée un sommet 
 const drawCircle = (x, y, color) => {
@@ -43,26 +47,22 @@ const drawEdge = (x1, y1, x2, y2, color, largeur) => {
 };
 
 
-
-
-
-const resizeCanvas = () => {
-	const { width, height } = graphe.getBoundingClientRect();
-	graphe.width = width;
-	graphe.height = height;
-
-	// Reset the transformation matrix to the identity matrix
-	ctx.setTransform(1, 0, 0, 1, 0, 0);
-
-	// Scale the context to match the new canvas size
-	const scaleX = width / graphe.offsetWidth;
-	const scaleY = height / graphe.offsetHeight;
-	ctx.scale(scaleX, scaleY);
+const transformPoint = (x, y, matrix) => {
+	return {
+		x: x * matrix.a + y * matrix.c + matrix.e,
+		y: x * matrix.b + y * matrix.d + matrix.f
+	};
 };
 
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas(); // Initial call to set up the canvas size
+const drawTransformedCircle = (x, y, color) => {
+	const point = transformPoint(x, y, matrix);
+	drawCircle(point.x, point.y, color);
+};
 
+const drawTransformedEdge = (x1, y1, x2, y2, color, largeur) => {
+	const point1 = transformPoint(x1, y1, matrix);
+	const point2 = transformPoint(x2, y2, matrix);
+	drawEdge(point1.x, point1.y, point2.x, point2.y, color, largeur);
+};
 
-
-export { circleLine, drawEdge };
+export { circleLine, drawEdge, QuotientHeight, QuotientWidht, drawTransformedEdge}; 

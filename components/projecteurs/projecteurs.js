@@ -135,7 +135,6 @@ const validateEdges = () => {
 				if (menu) {
 					window.location.href = "../../index.html";
 				} else {
-					
 				}
 			});
 	}

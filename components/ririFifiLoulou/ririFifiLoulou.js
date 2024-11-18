@@ -1,5 +1,6 @@
 import { k3, resetEdgesColor, edges, redrawGraph } from "../../public/js/k3.js";
 import { updateInfo } from "../../public/js/script.js";
+import { QuotientHeight, QuotientWidht } from "../../public/js/grapheCreation.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
@@ -20,15 +21,17 @@ const images = [img1, img2, img3, img4, img5, img6];
 
 
 
+
+
 // Intégration des images
 const drawTheImage = () => {
 	const positions = [
-		{ x: 145, y: 50 },
-		{ x: 345, y: 50 },
-		{ x: 545, y: 50 },
-		{ x: 145, y: 475 },
-		{ x: 345, y: 475 },
-		{ x: 545, y: 475 }
+		{ x: 145*QuotientWidht, y: 50*QuotientHeight },
+		{ x: 345*QuotientWidht, y: 50*QuotientHeight },
+		{ x: 545*QuotientWidht, y: 50*QuotientHeight },
+		{ x: 145*QuotientWidht, y: 475*QuotientHeight },
+		{ x: 345*QuotientWidht, y: 475*QuotientHeight },
+		{ x: 545*QuotientWidht, y: 475*QuotientHeight }
 	];
 
 	images.forEach((img, index) => {
@@ -131,8 +134,8 @@ const validateEdges = () => {
 
 // Changement d'état des arêtes
 graphe.addEventListener("click", (event) => {
-	const clickX = event.clientX - graphe.offsetLeft;
-	const clickY = event.clientY - graphe.offsetTop;
+	const clickX = (event.clientX - graphe.offsetLeft);
+	const clickY = (event.clientY - graphe.offsetTop);
 
 	edges.forEach(edge => {
 		const { x1, y1, x2, y2 } = edge;
@@ -182,9 +185,31 @@ const retourMenu = () => {
 };
 
 
+// Redimensionnement du canvas
+
+graphe.width = window.innerWidth/2;
+graphe.height = window.innerHeight/1.1;
+
+const resizeCanvas = () => {
+	const scaleX = window.innerWidth / 1500;
+	const scaleY = window.innerHeight / 820;
+	const scale = Math.min(scaleX, scaleY);
+
+	graphe.width = 1500 * scale / 2;
+	graphe.height = 820 * scale / 1.1;
+
+	ctx.setTransform(scale, 0, 0, scale, 0, 0);
+	redrawGraph();
+	drawTheImage();
+};
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+
+
 
 checkImagesLoaded();
-//canvasResponsive();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
 document.getElementById("valider").addEventListener("click", verificationTricherie);
 document.getElementById("menu").addEventListener("click", retourMenu);
