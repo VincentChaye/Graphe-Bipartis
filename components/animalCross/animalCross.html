@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale= 0.9">
@@ -12,41 +13,42 @@
 </head>
 
 <body>
-	<div class="row">
+	<div class="container">
+		<div class="row">
+			<div class="col-3" id="consigne">
+				<h1>Jeu – Animal-cross </h1>
+				<p> Saurez vous retrouvez avec quel animal chaque participant a couru cette épreuve à partir des
+					informations suivantes.</p>
+				<ul>
+					<li> L’aborigène n’a pas couru avec le kangourou avec lequel il est venu.</li>
+					<li> La chinoise et le touareg sont contents de n’avoir pas tiré l’ours blanc.</li>
+					<li> L’inuit, le touareg, et la chinoise sont déçus de ne pas être avec le panda. </li>
+					<li> La personne qui court avec le lama apprécie l’inuit, le péruvien et la chinoise, mais
+						se méfie de son adversaire qui court avec le kangourou.</li>
+				</ul>
 
-		<div class="col-3" id="consigne">
-			<h1>Jeu –  Animal-cross </h1>
-			<p> Saurez vous retrouvez avec quel animal chaque participant a couru cette épreuve à partir des
-				informations suivantes.</p>
-			<ul>
-				<li> L’aborigène n’a pas couru avec le kangourou avec lequel il est venu.</li>
-				<li> La chinoise et le touareg sont contents de n’avoir pas tiré l’ours blanc.</li>
-				<li> L’inuit, le touareg, et la chinoise sont déçus de ne pas être avec le panda. </li>
-				<li> La personne qui court avec le lama apprécie l’inuit, le péruvien et la chinoise, mais
-					se méfie de son adversaire qui court avec le kangourou.</li>
-			</ul>
-
-		</div>
-		<div class="col-6">
-			<canvas id="graphe" width="800" height="700"></canvas>
-		</div>
-		<div class="col-2" id="aideJeu">
-			<h5> cliquer sur les liens pour changer leur état : </h5>
-			<ul>
-				<li>
-					<redEdge>|</redEdge> La liaison n'existe pas
-				</li>
-				<li>
-					<greenEdge>|</greenEdge> La liaison existe
-				</li>
-				<li>
-					<greyEdge>|</greyEdge> Aucune information sur la liaison
-				</li>
-			</ul>
-			<div id="resultat">
-				<button type="button" class="btn btn-primary" id="valider">Valider</button>
-				<button type="button" class="btn btn-primary" id="recommencer">Recommencer</button>
-				<button type="button" class="btn btn-primary" id="menu">Menu</button>
+			</div>
+			<div class="col-6">
+				<canvas id="graphe" width="800" height="700"></canvas>
+			</div>
+			<div class="col-2" id="aideJeu">
+				<h5> cliquer sur les liens pour changer leur état : </h5>
+				<ul>
+					<li>
+						<redEdge>|</redEdge> La liaison n'existe pas
+					</li>
+					<li>
+						<greenEdge>|</greenEdge> La liaison existe
+					</li>
+					<li>
+						<greyEdge>|</greyEdge> Aucune information sur la liaison
+					</li>
+				</ul>
+				<div id="resultat">
+					<button type="button" class="btn btn-primary" id="valider">Valider</button>
+					<button type="button" class="btn btn-primary" id="recommencer">Recommencer</button>
+					<button type="button" class="btn btn-primary" id="menu">Menu</button>
+				</div>
 			</div>
 		</div>
 

@@ -14,28 +14,25 @@ body {
 	padding: 0px;
 	margin-bottom: 5px;
 	box-shadow: 0px 0px 3px black;
+	left: 10px;
+	top: 10px;
+	width: 20%;
+	position: absolute;
 }
 
 #consigne h1 {
 	text-align: center;
 	font-size: 40q;
 	background-color: rgba(36, 161, 235, 0.5);
-	margin-bottom: 20px;
+	margin-bottom: 50px;
 	padding: 0px;
 	padding-bottom: 10px;
 	padding-top: 10px;
 }
 
-#consigne p{
-	font-size: 20q;
-	margin-bottom: 40px;
-	line-height: 30px;
-	margin-left: 10px;
-}
-
-
+#consigne p,
 #consigne ul {
-	font-size: 20q;
+	font-size: 25q;
 	margin-bottom: 40px;
 	line-height: 30px;
 	margin-left: 10px;
@@ -52,8 +49,15 @@ canvas {
 	border-radius: 10px;
 	box-shadow: 0px 0px 5px black;
 	background-color: lightyellow;
-
+	z-index: 1; 
+	/*width: 100%;*/
+	position: relative;
+	cursor: crosshair;
+	left: 50%;
+	right:50%;
 }
+
+
 
 /* Aide au jeu */
 
@@ -61,12 +65,14 @@ canvas {
 #aideJeu {
 	border: 2px #24A1EB solid;
 	border-radius: 10px;
-	margin-left: 10px;
 	background-color: aliceblue;
 	padding: 0px;
 	margin-bottom: 5px;
 	box-shadow: 0px 0px 3px black;
-	margin-left: 10px;
+	width: 15%;
+	position: absolute;
+	right: 10px;
+	top: 10px;
 }
 
 #aideJeu h5 {
@@ -110,3 +116,13 @@ redEdge {
 	margin-left: 10px;
 	margin-top: 20px;
 }
+
+
+/*@media screen and (max-width: 800px) {
+
+	canvas {
+		position: absolute;
+		max-width: max-content/3 ;
+	}
+
+}*/

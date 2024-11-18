@@ -2,6 +2,7 @@ import { k3, resetEdgesColor, edges, redrawGraph } from "../../public/js/k3.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
+
 const img1 = new Image();
 img1.src = "/public/img/chien2.png";
 const img2 = new Image();
@@ -15,6 +16,7 @@ img5.src = "/public/img/niche1.png";
 const img6 = new Image();
 img6.src = "/public/img/niche2.png";
 const images = [img1, img2, img3, img4, img5, img6];
+
 
 // Intégration des images
 const drawTheImage = () => {

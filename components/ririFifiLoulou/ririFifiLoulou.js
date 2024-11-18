@@ -1,9 +1,9 @@
 import { k3, resetEdgesColor, edges, redrawGraph } from "../../public/js/k3.js";
+import { pastille } from "../../public/js/script.js";	
 
 const graphe = document.querySelector('#graphe');
-let canvas = document.getElementById('responsive-canvas');
-
 const ctx = graphe.getContext('2d');
+
 const img1 = new Image();
 img1.src = "/public/img/riri.png";
 const img2 = new Image();
@@ -18,9 +18,10 @@ const img6 = new Image();
 img6.src = "/public/img/peroquet.png";
 const images = [img1, img2, img3, img4, img5, img6];
 
-let canvasWidth = graphe.width;
-let canvasHeight = graphe.height;
-let scale = 1; 
+/* verifie si le niveau a deja été fait */
+
+let info1 = localStorage.getItem('info1') !== null ? parseInt(localStorage.getItem('info1')) : 0;
+
 
 // Intégration des images
 const drawTheImage = () => {
@@ -108,6 +109,7 @@ const validateEdges = () => {
         .then((menu) => {
             if (menu) {
                 window.location.href = "../../index.html";
+				localStorage.setItem('info1', 1);
             } else {
                 resetEdgesColor();
             }
@@ -183,13 +185,11 @@ const retourMenu = () => {
 	});
 };
 
-//const canvasResponsive = () => {
-//	const scaleFactor = Math.min(window.innerWidth / 800, window.innerHeight / 700);
-//    graphe.width = 1000 * scaleFactor;
-//    graphe.height = 1000 * scaleFactor;
-//    scale = scaleFactor;
-//    redrawGraph();
-//};
+
+
+
+
+
 
 
 
@@ -198,9 +198,10 @@ checkImagesLoaded();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
 document.getElementById("valider").addEventListener("click", verificationTricherie);
 document.getElementById("menu").addEventListener("click", retourMenu);
-//window.addEventListener('resize', canvasResponsive);
-//canvasResponsive();
 
 
 
-export { drawTheImage };
+
+
+
+export { drawTheImage, info1 };
