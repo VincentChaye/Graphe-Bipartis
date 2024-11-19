@@ -60,7 +60,7 @@ const resetEdgesColor = () => {
         edge.color = "grey";
         edge.largeur = 4;
     });
-    redrawGraph();
+    redrawGraph(); /* test*/ 
 };
 
 
