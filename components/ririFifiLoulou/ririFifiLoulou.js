@@ -1,6 +1,6 @@
 import { k3, resetEdgesColor, edges, redrawGraph } from "../../public/js/k3.js";
 import { updateInfo } from "../../public/js/script.js";
-import { quotientWidth } from "../../public/js/grapheCreation.js";
+import {  } from "../../public/js/grapheCreation.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
@@ -36,10 +36,10 @@ const drawTheImage = () => {
 
 	images.forEach((img, index) => {
 		if (img.complete) {
-			ctx.drawImage(img, (positions[index].x)*quotientWidth, (positions[index].y)*quotientWidth, 150*quotientWidth, 190*quotientWidth);
+			ctx.drawImage(img, (positions[index].x), (positions[index].y), 150, 190);
 		} else {
 			img.addEventListener("load", () => {
-				ctx.drawImage(img, (positions[index].x)*quotientWidth, (positions[index].y)*quotientWidth, 150*quotientWidth, 190*quotientWidth);
+				ctx.drawImage(img, (positions[index].x), (positions[index].y), 150, 190);
 			});
 		}
 	});
@@ -136,7 +136,6 @@ const validateEdges = () => {
 graphe.addEventListener("click", (event) => {
 	const clickX = (event.clientX - graphe.offsetLeft);
 	const clickY = (event.clientY - graphe.offsetTop);
-	console.log(clickX, clickY);
 
 	edges.forEach(edge => {
 
@@ -193,38 +192,12 @@ const retourMenu = () => {
 
 
 
-// Redimensionnement du canvas
-
-graphe.width = (window.innerWidth/2);
-graphe.height = (window.innerHeight/1.1);
-
-const resizeCanvas = () => {
-
-	let quotientWidth = window.innerWidth / 1500;
-	graphe.width = (window.innerWidth/2);
-	graphe.height = (window.innerHeight/1.1);
-
-
-	const scaleX = quotientWidth;
-	const scaleY = quotientWidth;
-	const scale = Math.min(scaleX, scaleY);	
-
-
-	ctx.setTransform(scale, 0, 0, scale, 0, 0);
-	redrawGraph();
-	drawTheImage();
-};
-
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-
-
 checkImagesLoaded();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
 document.getElementById("valider").addEventListener("click", verificationTricherie);
 document.getElementById("menu").addEventListener("click", retourMenu);
 
 
-export {drawTheImage, quotientWidth};
+export {drawTheImage};
 
 
