@@ -1,9 +1,8 @@
 const ctx = graphe.getContext('2d');
 
 let matrix = ctx.getTransform();	
+let quotientWidth = window.innerWidth / 1500;
 
-let QuotientWidht = matrix.a;
-let QuotientHeight = matrix.d;
 
 // Crée un sommet 
 const drawCircle = (x, y, color) => {
@@ -20,7 +19,7 @@ const drawCircle = (x, y, color) => {
 // Ligne de sommets
 const circleLine = (x, y, color, k, spaceBetween, rotation) => {
 	for (let i = 0; i < k; i++) {
-		drawCircle(x + spaceBetween * i, y + rotation * i, color[i]);
+		drawTransformedCircle(x + spaceBetween * i, y + rotation * i, color[i]);
 	}
 };
 
@@ -46,11 +45,10 @@ const drawEdge = (x1, y1, x2, y2, color, largeur) => {
 	ctx.stroke();
 };
 
-
 const transformPoint = (x, y, matrix) => {
 	return {
-		x: x * matrix.a + y * matrix.c + matrix.e,
-		y: x * matrix.b + y * matrix.d + matrix.f
+		x: x * quotientWidth + y * matrix.c + matrix.e,
+		y: x * matrix.b + y * quotientWidth + matrix.f
 	};
 };
 
@@ -65,4 +63,14 @@ const drawTransformedEdge = (x1, y1, x2, y2, color, largeur) => {
 	drawEdge(point1.x, point1.y, point2.x, point2.y, color, largeur);
 };
 
-export { circleLine, drawEdge, QuotientHeight, QuotientWidht, drawTransformedEdge}; 
+const resizeSize = () => {
+	quotientWidth = window.innerWidth / 1500;
+	matrix = ctx.getTransform();
+};
+
+resizeSize();
+window.addEventListener("resize", resizeSize);
+
+
+
+export { circleLine, drawEdge, quotientWidth, drawTransformedEdge, 	resizeSize }; 

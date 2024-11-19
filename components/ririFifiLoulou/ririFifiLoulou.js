@@ -1,6 +1,6 @@
 import { k3, resetEdgesColor, edges, redrawGraph } from "../../public/js/k3.js";
 import { updateInfo } from "../../public/js/script.js";
-import { QuotientHeight, QuotientWidht } from "../../public/js/grapheCreation.js";
+import { quotientWidth } from "../../public/js/grapheCreation.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
@@ -26,20 +26,20 @@ const images = [img1, img2, img3, img4, img5, img6];
 // Intégration des images
 const drawTheImage = () => {
 	const positions = [
-		{ x: 145*QuotientWidht, y: 50*QuotientHeight },
-		{ x: 345*QuotientWidht, y: 50*QuotientHeight },
-		{ x: 545*QuotientWidht, y: 50*QuotientHeight },
-		{ x: 145*QuotientWidht, y: 475*QuotientHeight },
-		{ x: 345*QuotientWidht, y: 475*QuotientHeight },
-		{ x: 545*QuotientWidht, y: 475*QuotientHeight }
+		{ x: 145, y: 50 },
+		{ x: 345, y: 50 },
+		{ x: 545, y: 50 },
+		{ x: 145, y: 475 },
+		{ x: 345, y: 475 },
+		{ x: 545, y: 475 }
 	];
 
 	images.forEach((img, index) => {
 		if (img.complete) {
-			ctx.drawImage(img, positions[index].x, positions[index].y, 150, 190);
+			ctx.drawImage(img, (positions[index].x)*quotientWidth, (positions[index].y)*quotientWidth, 150*quotientWidth, 190*quotientWidth);
 		} else {
 			img.addEventListener("load", () => {
-				ctx.drawImage(img, positions[index].x, positions[index].y, 150, 190);
+				ctx.drawImage(img, (positions[index].x)*quotientWidth, (positions[index].y)*quotientWidth, 150*quotientWidth, 190*quotientWidth);
 			});
 		}
 	});
@@ -136,12 +136,16 @@ const validateEdges = () => {
 graphe.addEventListener("click", (event) => {
 	const clickX = (event.clientX - graphe.offsetLeft);
 	const clickY = (event.clientY - graphe.offsetTop);
+	console.log(clickX, clickY);
 
 	edges.forEach(edge => {
-		const { x1, y1, x2, y2 } = edge;
+
+		let { x1, y1, x2, y2 } = edge;
+
+		console.log(edge);
 		const distanceToStart = Math.sqrt((clickX - x1) ** 2 + (clickY - y1) ** 2);
 		const distanceToEnd = Math.sqrt((clickX - x2) ** 2 + (clickY - y2) ** 2);
-		const edgeLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+		const edgeLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);	
 
 		// Vérifie si le point cliqué est proche de l'arête
 		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 0.1 ) {
@@ -152,6 +156,7 @@ graphe.addEventListener("click", (event) => {
 			} else if (edge.color === "green") {
 				edge.color = "red";
 			}
+
 			redrawGraph();
 		}
 	});
@@ -185,18 +190,25 @@ const retourMenu = () => {
 };
 
 
+
+
+
 // Redimensionnement du canvas
 
-graphe.width = window.innerWidth/2;
-graphe.height = window.innerHeight/1.1;
+graphe.width = (window.innerWidth/2);
+graphe.height = (window.innerHeight/1.1);
 
 const resizeCanvas = () => {
-	const scaleX = window.innerWidth / 1500;
-	const scaleY = window.innerHeight / 820;
-	const scale = Math.min(scaleX, scaleY);
 
-	graphe.width = 1500 * scale / 2;
-	graphe.height = 820 * scale / 1.1;
+	let quotientWidth = window.innerWidth / 1500;
+	graphe.width = (window.innerWidth/2);
+	graphe.height = (window.innerHeight/1.1);
+
+
+	const scaleX = quotientWidth;
+	const scaleY = quotientWidth;
+	const scale = Math.min(scaleX, scaleY);	
+
 
 	ctx.setTransform(scale, 0, 0, scale, 0, 0);
 	redrawGraph();
@@ -207,16 +219,12 @@ resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
 
-
-
 checkImagesLoaded();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
 document.getElementById("valider").addEventListener("click", verificationTricherie);
 document.getElementById("menu").addEventListener("click", retourMenu);
 
 
+export {drawTheImage, quotientWidth};
 
 
-
-
-export { drawTheImage};

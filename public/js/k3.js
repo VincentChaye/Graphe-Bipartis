@@ -1,4 +1,4 @@
-import { circleLine, drawEdge, drawTransformedEdge } from "/public/js/grapheCreation.js";
+import { circleLine, drawEdge, drawTransformedEdge, quotientWidth } from "/public/js/grapheCreation.js";
 
 const edges = [];
 const color = ["lightgrey", "lightgrey", "lightgrey", "lightgrey", "lightgrey"];
@@ -47,7 +47,7 @@ const redrawGraph = () => {
     ctx.clearRect(0, 0, graphe.width, graphe.height);
     if (drawTheImage) drawTheImage(); 
     edges.forEach(edge => {
-        drawEdge(edge.x1, edge.y1, edge.x2, edge.y2, edge.color, edge.largeur);
+        drawTransformedEdge(edge.x1, edge.y1, edge.x2, edge.y2, edge.color, edge.largeur);
     });
     circleLine(200, 250, color, 3, 200,0);
     circleLine(200, 450, color, 3, 200,0);
@@ -62,6 +62,8 @@ const resetEdgesColor = () => {
     });
     redrawGraph();
 };
+
+
 
 
 
