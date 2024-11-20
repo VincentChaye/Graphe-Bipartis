@@ -42,7 +42,6 @@ const k3 = async () => {
     redrawGraph(); 
 };
 
-
 const redrawGraph = () => {
     ctx.clearRect(0, 0, graphe.width, graphe.height);
     if (drawTheImage) drawTheImage(); 
@@ -58,14 +57,8 @@ const redrawGraph = () => {
 const resetEdgesColor = () => {
     edges.forEach(edge => {
         edge.color = "grey";
-        edge.largeur = 4;
     });
     redrawGraph(); /* test*/ 
 };
-
-
-
-
-
 
 export { k3, resetEdgesColor, edges, redrawGraph };

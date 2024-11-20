@@ -115,14 +115,10 @@ redEdge {
 #resultat button {
 	margin-left: 10px;
 	margin-top: 20px;
+	
 }
 
+html, body {
+    overflow-x: hidden;
+}
 
-/*@media screen and (max-width: 800px) {
-
-	canvas {
-		position: absolute;
-		max-width: max-content/3 ;
-	}
-
-}*/
