@@ -1,5 +1,6 @@
 import { updateInfo } from "../../public/js/script.js";
 import { tripartie, resetEdgesColor, edges, redrawGraph } from "../../public/js/tripartie.js";
+import { quotientWidth } from "../../public/js/grapheCreation.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
@@ -43,10 +44,10 @@ const drawTheImage = () => {
 
 	images.forEach((img, index) => {
 		if (img.complete) {
-			ctx.drawImage(img, positions[index].x, positions[index].y, 80, 100);
+			ctx.drawImage(img, (positions[index].x)*quotientWidth, (positions[index].y)*quotientWidth, 80*quotientWidth, 100*quotientWidth);
 		} else {
 			img.addEventListener("load", () => {
-				ctx.drawImage(img, positions[index].x, positions[index].y, 80, 100);
+				ctx.drawImage(img, (positions[index].x)*quotientWidth, (positions[index].y)*quotientWidth, 80*quotientWidth, 100*quotientWidth);
 			});
 		}
 	});
@@ -116,6 +117,7 @@ const validateEdges = () => {
 					updateInfo(5, 1);
 					window.location.href = "../../index.html";
 				} else {
+					updateInfo(5, 1);
 				}
 			});
 	
@@ -138,17 +140,17 @@ const validateEdges = () => {
 
 // Changement d'état des arêtes
 graphe.addEventListener("click", (event) => {
-	const clickX = event.clientX - graphe.offsetLeft;
-	const clickY = event.clientY - graphe.offsetTop;
-
+	const clickX = (event.clientX - graphe.offsetLeft)/quotientWidth;
+	const clickY = (event.clientY - graphe.offsetTop)/quotientWidth;
+	
 	edges.forEach(edge => {
-		const { x1, y1, x2, y2 } = edge;
+		let { x1, y1, x2, y2 } = edge;
 		const distanceToStart = Math.sqrt((clickX - x1) ** 2 + (clickY - y1) ** 2);
 		const distanceToEnd = Math.sqrt((clickX - x2) ** 2 + (clickY - y2) ** 2);
-		const edgeLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+		const edgeLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);	
 
 		// Vérifie si le point cliqué est proche de l'arête
-		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 0.1) {
+		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 0.1 ) {
 			if (edge.color === "grey") {
 				edge.color = "green";
 			} else if (edge.color === "red") {
@@ -188,6 +190,24 @@ const retourMenu = () => {
 	});
 };
 
+
+// Redimensionnement du canvas
+
+graphe.width = (window.innerWidth/2);
+graphe.height = (window.innerHeight/1.1);
+
+const resizeCanvas = () => {
+
+	let quotientWidth = window.innerWidth / 1500;
+	graphe.width = (window.innerWidth/2);
+	graphe.height = (window.innerHeight/1.1);	
+
+	redrawGraph();
+	drawTheImage();
+};
+
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 
 checkImagesLoaded();
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);

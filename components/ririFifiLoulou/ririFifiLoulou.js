@@ -111,6 +111,7 @@ const validateEdges = () => {
 				updateInfo(0, 1);
                 window.location.href = "../../index.html";
             } else {
+				updateInfo(0, 1);
             }
         });
 
@@ -134,15 +135,11 @@ const validateEdges = () => {
 
 // Changement d'état des arêtes
 graphe.addEventListener("click", (event) => {
-	const clickX = (event.clientX - graphe.offsetLeft);
-	const clickY = (event.clientY - graphe.offsetTop);
-	console.log(clickX, clickY);
-
+	const clickX = (event.clientX - graphe.offsetLeft)/quotientWidth;
+	const clickY = (event.clientY - graphe.offsetTop)/quotientWidth;
+	
 	edges.forEach(edge => {
-
 		let { x1, y1, x2, y2 } = edge;
-
-		console.log(edge);
 		const distanceToStart = Math.sqrt((clickX - x1) ** 2 + (clickY - y1) ** 2);
 		const distanceToEnd = Math.sqrt((clickX - x2) ** 2 + (clickY - y2) ** 2);
 		const edgeLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);	
@@ -156,7 +153,6 @@ graphe.addEventListener("click", (event) => {
 			} else if (edge.color === "green") {
 				edge.color = "red";
 			}
-
 			redrawGraph();
 		}
 	});
@@ -190,9 +186,6 @@ const retourMenu = () => {
 };
 
 
-
-
-
 // Redimensionnement du canvas
 
 graphe.width = (window.innerWidth/2);
@@ -202,15 +195,8 @@ const resizeCanvas = () => {
 
 	let quotientWidth = window.innerWidth / 1500;
 	graphe.width = (window.innerWidth/2);
-	graphe.height = (window.innerHeight/1.1);
+	graphe.height = (window.innerHeight/1.1);	
 
-
-	const scaleX = quotientWidth;
-	const scaleY = quotientWidth;
-	const scale = Math.min(scaleX, scaleY);	
-
-
-	ctx.setTransform(scale, 0, 0, scale, 0, 0);
 	redrawGraph();
 	drawTheImage();
 };
@@ -225,6 +211,6 @@ document.getElementById("valider").addEventListener("click", verificationTricher
 document.getElementById("menu").addEventListener("click", retourMenu);
 
 
-export {drawTheImage, quotientWidth};
+export {drawTheImage};
 
 
