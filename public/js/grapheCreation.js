@@ -43,11 +43,6 @@ const drawEdge = (x1, y1, x2, y2, color, largeur) => {
 	ctx.stroke();
 };
 
-<<<<<<< HEAD
-
-
-export { circleLine, drawEdge }; 
-=======
 const transformPoint = (x, y, matrix) => {
 	return {
 		x: x * quotientWidth + y * matrix.c + matrix.e,
@@ -88,4 +83,3 @@ window.addEventListener("resize", resizeSize);
 
 
 export { circleLine, drawEdge, quotientWidth, drawTransformedEdge, 	resizeSize, drawCircle }; 
->>>>>>> responsive
