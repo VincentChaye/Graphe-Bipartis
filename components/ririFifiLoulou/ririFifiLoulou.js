@@ -1,6 +1,6 @@
 import { k3, resetEdgesColor, edges, redrawGraph } from "../../public/js/k3.js";
 import { updateInfo } from "../../public/js/script.js";
-import { quotientWidth } from "../../public/js/grapheCreation.js";	
+import { quotientWidth } from "../../public/js/grapheCreation.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
