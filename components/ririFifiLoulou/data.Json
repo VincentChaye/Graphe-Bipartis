@@ -1,0 +1,208 @@
+{
+	"graph": {
+		"nodes": {
+			"0": {
+				"metadata": {
+					"x": 145,
+					"y": 50,
+					"state": 1,
+					"decoration": {
+						"image": "riri.png",
+						"offsetY": 8,
+						"offsetX": 8
+					}
+				}
+			},
+			"1": {
+				"metadata": {
+					"x": 345,
+					"y": 50,
+					"state": 1,
+					"decoration": {
+						"text": "Fifi",
+						"offsetY": 8,
+						"offsetX": 8
+					}
+				}
+			},
+			"2": {
+				"metadata": {
+					"x": 545,
+					"y": 50,
+					"state": 1,
+					"decoration": {
+						"text": "Fifi",
+						"offsetY": 8,
+						"offsetX": 8
+					}
+				}
+			},
+			"3": {
+				"metadata": {
+					"x": 145,
+					"y": 475,
+					"state": 1,
+					"decoration": {
+						"text": "Fifi",
+						"offsetY": 8,
+						"offsetX": 8
+					}
+				}
+			},
+			"4": {
+				"metadata": {
+					"x": 345,
+					"y": 475,
+					"state": 1,
+					"decoration": {
+						"text": "Fifi",
+						"offsetY": 8,
+						"offsetX": 8
+					}
+				}
+			},
+			"5": {
+				"metadata": {
+					"x": 545,
+					"y": 475,
+					"state": 1,
+					"decoration": {
+						"text": "Fifi",
+						"offsetY": 8,
+						"offsetX": 8
+					}
+				}
+			},
+			"edges": [
+				{
+					"source": "0",
+					"target": "3",
+					"directed": true,
+					"metadata": {
+						"decoration": {
+							"text": "Lien 1",
+							"offsetY": -2
+						}
+					}
+				},
+				{
+					"source": "0",
+					"target": "4",
+					"directed": true,
+					"metadata": {
+						"decoration": {
+							"text": "Lien 1",
+							"offsetY": -2
+						}
+					}
+				},
+				{
+					"source": "0",
+					"target": "5",
+					"directed": true,
+					"metadata": {
+						"decoration": {
+							"text": "Lien 1",
+							"offsetY": -2
+						}
+					}
+				},
+				{
+					"source": "1",
+					"target": "3",
+					"directed": true,
+					"metadata": {
+						"decoration": {
+							"text": "Lien 1",
+							"offsetY": -2
+						}
+					}
+				},
+				{
+					"source": "1",
+					"target": "4",
+					"directed": true,
+					"metadata": {
+						"decoration": {
+							"text": "Lien 1",
+							"offsetY": -2
+						}
+					}
+				},
+				{
+					"source": "1",
+					"target": "5",
+					"directed": true,
+					"metadata": {
+						"decoration": {
+							"text": "Lien 1",
+							"offsetY": -2
+						}
+					}
+				},
+				{
+					"source": "2",
+					"target": "3",
+					"directed": true,
+					"metadata": {
+						"decoration": {
+							"text": "Lien 1",
+							"offsetY": -2
+						}
+					}
+				},
+				{
+					"source": "2",
+					"target": "4",
+					"directed": true,
+					"metadata": {
+						"decoration": {
+							"text": "Lien 1",
+							"offsetY": -2
+						}
+					}
+				},
+				{
+					"source": "2",
+					"target": "5",
+					"directed": true,
+					"metadata": {
+						"decoration": {
+							"text": "Lien 1",
+							"offsetY": -2
+						}
+					}
+				}
+			],
+			"metadata": {
+				"nodeStates": [
+					{
+						"label": "Rouge",
+						"css": "red"
+					},
+					{
+						"label": "Jaune",
+						"css": "yellow"
+					},
+					{
+						"label": "Vert",
+						"css": "green"
+					}
+				],
+				"linkStates": [
+					{
+						"label": "Ne sait pas",
+						"css": "dash gray"
+					},
+					{
+						"label": "Lien"
+					},
+					{
+						"label": "Pas de lien",
+						"css": "dash red"
+					}
+				]
+			}
+		}
+	}
+}
