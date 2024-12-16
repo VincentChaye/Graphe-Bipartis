@@ -95,7 +95,7 @@ const verificationTricherie = () => {
 // Vérifie si toutes les arrêtes vertes autorisées sont présentes
 
 const validateEdges = () => {
-    const authorizedGreenEdges = [2, 3, 7];
+    const authorizedGreenEdges = [1,5,6];
 
     const allAuthorizedEdgesGreen = authorizedGreenEdges.every(index => edges[index].color === "green");
 

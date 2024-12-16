@@ -10,7 +10,7 @@ let drawTheImage;
 
 const importDrawImageFunction = async () => {
     const currentPage = window.location.pathname; 
-
+ 
     if (currentPage.includes('ririFifiLoulou')) {
         const module = await import('../../components/ririFifiLoulou/ririFifiLoulou.js');
         drawTheImage = module.drawTheImage;

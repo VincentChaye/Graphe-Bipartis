@@ -1,0 +1,8 @@
+Format Json :
+
+Type de graphe avec 2 valeurs; premiere : nombre de point; 
+							   deuxième : nombre de ligne de point
+
+
+réponse attendu;
+
