@@ -86,4 +86,4 @@ window.addEventListener("resize", resizeSize);
 
 
 
-export { circleLine, drawEdge, quotientWidth, drawTransformedEdge, 	resizeSize, drawCircle }; 
+export { circleLine, drawEdge,drawTransformedCircle, quotientWidth, drawTransformedEdge, 	resizeSize, drawCircle }; 

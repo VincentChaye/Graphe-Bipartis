@@ -3,22 +3,6 @@ import { updateInfo } from "../../public/js/script.js";
 import { quotientWidth } from "../../public/js/grapheCreation.js";
 
 
-fetch('./data.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Erreur lors du chargement du fichier JSON');
-    }
-    return response.json(); 
-  })
-  .then(data => {
-    console.log(data); 
-    console.log(data.name); 
-  })
-  .catch(error => {
-    console.error('Erreur:', error);
-  });
-
-
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
 

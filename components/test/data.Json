@@ -3,11 +3,12 @@
 		"nodes": {
 			"0": {
 				"metadata": {
-					"x": 145,
-					"y": 50,
+					"x": 245,
+					"y": 150,
 					"state": 1,
+					"nbnode": 6,
 					"decoration": {
-						"image": "riri.png",
+						"image": "riri.png ",
 						"offsetY": 8,
 						"offsetX": 8
 					}
@@ -15,11 +16,11 @@
 			},
 			"1": {
 				"metadata": {
-					"x": 345,
-					"y": 50,
+					"x": 445,
+					"y": 150,
 					"state": 1,
 					"decoration": {
-						"text": "Fifi",
+						"image": "fifi.png",
 						"offsetY": 8,
 						"offsetX": 8
 					}
@@ -27,11 +28,11 @@
 			},
 			"2": {
 				"metadata": {
-					"x": 545,
-					"y": 50,
+					"x": 645,
+					"y": 150,
 					"state": 1,
 					"decoration": {
-						"text": "Fifi",
+						"image": "loulou.png",
 						"offsetY": 8,
 						"offsetX": 8
 					}
@@ -39,11 +40,11 @@
 			},
 			"3": {
 				"metadata": {
-					"x": 145,
-					"y": 475,
+					"x": 245,
+					"y": 575,
 					"state": 1,
 					"decoration": {
-						"text": "Fifi",
+						"image": "chat.png",
 						"offsetY": 8,
 						"offsetX": 8
 					}
@@ -51,11 +52,11 @@
 			},
 			"4": {
 				"metadata": {
-					"x": 345,
-					"y": 475,
+					"x": 445,
+					"y": 575,
 					"state": 1,
 					"decoration": {
-						"text": "Fifi",
+						"image": "hamster.png",
 						"offsetY": 8,
 						"offsetX": 8
 					}
@@ -63,11 +64,11 @@
 			},
 			"5": {
 				"metadata": {
-					"x": 545,
-					"y": 475,
+					"x": 645,
+					"y": 575,
 					"state": 1,
 					"decoration": {
-						"text": "Fifi",
+						"image": "peroquet.png",
 						"offsetY": 8,
 						"offsetX": 8
 					}
