@@ -76,7 +76,6 @@ info.forEach((value, index) => {
     if (value === 1){
         document.querySelectorAll(`.image-container:nth-of-type(${index + 1}) p`).forEach(element =>{
             element.style.display = 'flex';
-            console.log(`info[${index}] = ${value}`);
         });
     }});
 
