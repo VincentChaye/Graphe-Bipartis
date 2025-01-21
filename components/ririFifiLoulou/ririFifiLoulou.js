@@ -201,7 +201,7 @@ const resizeCanvas = () => {
 	redrawGraph();
 	drawTheImage();
 };
-
+	
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 

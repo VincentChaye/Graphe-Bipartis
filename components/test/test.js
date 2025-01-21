@@ -1,8 +1,9 @@
-import { circleLine, drawEdge, drawTransformedCircle } from "../../public/js/grapheCreation.js";
+import { circleLine, drawTransformedEdge, drawTransformedCircle } from "../../public/js/grapheCreation.js";
 //import json from "../../components/test/data.Json";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
+
 
 fetch('./data.json')
 	.then(response => {
@@ -14,41 +15,23 @@ fetch('./data.json')
 	.then(data => {
 		let node = data.graph.nodes;
 		let edges = data.graph.nodes.edges;
-		let nbnode = node[0].metadata.nbnode;
+		let i = 0;
 		for (let i in node) {
+			
+			let img = new Image();
+			img.src = "../../public/img/" + node[i].metadata.decoration.image;
 			console.log(i);
 			drawTransformedCircle(node[i].metadata.x, node[i].metadata.y, "lightgrey");
-			console.log(`Node ${i} : x = ${node[i].metadata.x}, y = ${node[i].metadata.y}`);
-			//console.log(data.graph.nodes.edges);
-			
+			img.onload = () =>{
+				console.log(node[i].metadata.x);
+				ctx.drawImage(img, node[i].metadata.x, node[i].metadata.y);
+			};
 
-
-		}
-
-		for(let i in edges) {
-			drawEdge(edges[i].source.x, edges[i].source.y, edges[i].target.x, edges[i].target.y, "grey", 2);
-			console.log(`Edge ${i} : source = ${edges[i].source}, target = ${edges[i].target}`);
-		}
-
-
-/// TESTS
-
-
-function traverseEdges(jsonData) {
-	const edges = jsonData.graph.nodes.edges;
-	edges.forEach(edge => {
-		console.log(`Source: ${edge.source}, Target: ${edge.target}, Directed: ${edge.directed}`);
-		if (edge.metadata && edge.metadata.decoration) {
-			console.log(`Decoration Text: ${edge.metadata.decoration.text}, OffsetY: ${edge.metadata.decoration.offsetY}`);
-		}
-	});
-}
-
-
-	
-
-
-
+			while (edges[i] != undefined) {
+				drawTransformedEdge(node[edges[i].source].metadata.x, node[edges[i].source].metadata.y, node[edges[i].target].metadata.x, node[edges[i].target].metadata.y, "dark", 2);
+				i++;
+			}	
+		}	
 	})
 	.catch(error => {
 		console.error('Erreur:', error);
