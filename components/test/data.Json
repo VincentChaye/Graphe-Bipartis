@@ -8,8 +8,8 @@
 					"state": 1,
 					"decoration": {
 						"image": "riri.png ",
-						"offsetY": 8,
-						"offsetX": 8
+						"offsetY": 150,
+						"offsetX": 50
 					}
 				}
 			},
@@ -20,8 +20,8 @@
 					"state": 1,
 					"decoration": {
 						"image": "fifi.png",
-						"offsetY": 8,
-						"offsetX": 8
+						"offsetY": 150,
+						"offsetX": 50	
 					}
 				}
 			},
@@ -32,8 +32,8 @@
 					"state": 1,
 					"decoration": {
 						"image": "loulou.png",
-						"offsetY": 8,
-						"offsetX": 8
+						"offsetY": 150,
+						"offsetX": 50
 					}
 				}
 			},
@@ -44,8 +44,8 @@
 					"state": 1,
 					"decoration": {
 						"image": "chat.png",
-						"offsetY": 8,
-						"offsetX": 8
+						"offsetY": 0,
+						"offsetX": 50
 					}
 				}
 			},
@@ -56,8 +56,8 @@
 					"state": 1,
 					"decoration": {
 						"image": "hamster.png",
-						"offsetY": 8,
-						"offsetX": 8
+						"offsetY": 0,
+						"offsetX": 50
 					}
 				}
 			},
@@ -68,8 +68,8 @@
 					"state": 1,
 					"decoration": {
 						"image": "peroquet.png",
-						"offsetY": 8,
-						"offsetX": 8
+						"offsetY": 0,
+						"offsetX": 50
 					}
 				}
 			},

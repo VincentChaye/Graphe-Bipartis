@@ -15,17 +15,27 @@ fetch('./data.json')
 	.then(data => {
 		let node = data.graph.nodes;
 		let edges = data.graph.nodes.edges;
+		
 		let i = 0;
 		for (let i in node) {
+
+			if (!node[i] || !node[i].metadata || !node[i].metadata.decoration || !node[i].metadata.decoration.image) {
+				console.error(`Erreur : Le nœud à l'index ${i} ou ses propriétés sont manquantes`, node[i]);
+				continue; // Passer au nœud suivant si celui-ci est invalide
+			}
+
 			
+			const currentNode = node[i];
 			let img = new Image();
-			img.src = "../../public/img/" + node[i].metadata.decoration.image;
-			console.log(i);
-			drawTransformedCircle(node[i].metadata.x, node[i].metadata.y, "lightgrey");
+			img.src = "../../public/img/" + currentNode.metadata.decoration.image;
+
+			drawTransformedCircle(currentNode.metadata.x, currentNode.metadata.y, "lightgrey");
+
 			img.onload = () =>{
 				console.log(node[i].metadata.x);
-				ctx.drawImage(img, node[i].metadata.x, node[i].metadata.y);
+				ctx.drawImage(img, currentNode.metadata.x*quotientWidth - currentNode.metadata.decoration.offsetX*quotientWidth, currentNode.metadata.y*quotientWidth - currentNode.metadata.decoration.offsetY*quotientWidth, 110*quotientWidth, 150*quotientWidth);
 			};
+
 
 			while (edges[i] != undefined) {
 				drawTransformedEdge(node[edges[i].source].metadata.x, node[edges[i].source].metadata.y, node[edges[i].target].metadata.x, node[edges[i].target].metadata.y, "dark", 2);
