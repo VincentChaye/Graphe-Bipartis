@@ -4,7 +4,6 @@ import { circleLine, drawTransformedEdge, drawTransformedCircle } from "../../pu
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
 
-
 fetch('./data.json')
 	.then(response => {
 		if (!response.ok) {
@@ -19,10 +18,7 @@ fetch('./data.json')
 		let i = 0;
 		for (let i in node) {
 
-			if (!node[i] || !node[i].metadata || !node[i].metadata.decoration || !node[i].metadata.decoration.image) {
-				console.error(`Erreur : Le nœud à l'index ${i} ou ses propriétés sont manquantes`, node[i]);
-				continue; // Passer au nœud suivant si celui-ci est invalide
-			}
+			
 
 			
 			const currentNode = node[i];
@@ -32,7 +28,6 @@ fetch('./data.json')
 			drawTransformedCircle(currentNode.metadata.x, currentNode.metadata.y, "lightgrey");
 
 			img.onload = () =>{
-				console.log(node[i].metadata.x);
 				ctx.drawImage(img, currentNode.metadata.x*quotientWidth - currentNode.metadata.decoration.offsetX*quotientWidth, currentNode.metadata.y*quotientWidth - currentNode.metadata.decoration.offsetY*quotientWidth, 110*quotientWidth, 150*quotientWidth);
 			};
 
@@ -59,6 +54,6 @@ const resizeCanvas = () => {
 	//redrawGraph();
 	//drawTheImage();
 };
-
 resizeCanvas();
+
 window.addEventListener("resize", resizeCanvas);
