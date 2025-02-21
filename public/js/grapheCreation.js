@@ -46,6 +46,7 @@ const drawEdge = (x1, y1, x2, y2, color, largeur) => {
 	ctx.stroke();
 };
 
+// Transforme un point par rapport a l'ecran
 const transformPoint = (x, y, matrix) => {
 	return {
 		x: x * quotientWidth + y * matrix.c + matrix.e,
@@ -53,18 +54,21 @@ const transformPoint = (x, y, matrix) => {
 	};
 };
 
+// Dessine un sommet transformé
 const drawTransformedCircle = (x, y, color) => {
 	const point = transformPoint(x, y, matrix);
 	drawCircle(point.x, point.y, color);
 	circle++;
 };
 
+// Dessine une arête transformée
 const drawTransformedEdge = (x1, y1, x2, y2, color, largeur) => {
 	const point1 = transformPoint(x1, y1, matrix);
 	const point2 = transformPoint(x2, y2, matrix);
 	drawEdge(point1.x, point1.y, point2.x, point2.y, color, largeur);
 };
 
+// Redimensionne les sommets et les arêtes
 const resizeSize = () => {
 
 	if (quotientWidth >= '0.90'){

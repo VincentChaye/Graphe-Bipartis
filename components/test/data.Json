@@ -77,7 +77,7 @@
 				{
 					"source": "0",
 					"target": "3",
-					"directed": true,
+					"directed": false,
 					"metadata": {
 						"decoration": {
 							"text": "Lien 1",
@@ -99,7 +99,7 @@
 				{
 					"source": "0",
 					"target": "5",
-					"directed": true,
+					"directed": false,
 					"metadata": {
 						"decoration": {
 							"text": "Lien 1",
@@ -110,7 +110,7 @@
 				{
 					"source": "1",
 					"target": "3",
-					"directed": true,
+					"directed": false,
 					"metadata": {
 						"decoration": {
 							"text": "Lien 1",
@@ -121,7 +121,7 @@
 				{
 					"source": "1",
 					"target": "4",
-					"directed": true,
+					"directed": false,
 					"metadata": {
 						"decoration": {
 							"text": "Lien 1",
@@ -154,7 +154,7 @@
 				{
 					"source": "2",
 					"target": "4",
-					"directed": true,
+					"directed": false,
 					"metadata": {
 						"decoration": {
 							"text": "Lien 1",
@@ -165,7 +165,7 @@
 				{
 					"source": "2",
 					"target": "5",
-					"directed": true,
+					"directed": false,
 					"metadata": {
 						"decoration": {
 							"text": "Lien 1",
