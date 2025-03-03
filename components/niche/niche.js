@@ -1,107 +1,115 @@
-import { k3, resetEdgesColor, edges, redrawGraph } from "../../public/js/k3.js";
-import { updateInfo } from "../../public/js/script.js";
-import { quotientWidth } from "../../public/js/grapheCreation.js";
+import { drawTransformedEdge, drawTransformedCircle, quotientWidth } from "../../public/js/grapheCreation.js";
 
 const graphe = document.querySelector('#graphe');
 const ctx = graphe.getContext('2d');
+let edgesTab = [];
+let nodesData = {};
 
-const img1 = new Image();
-img1.src = "/public/img/chien2.png";
-const img2 = new Image();
-img2.src = "/public/img/chien1.png";
-const img3 = new Image();
-img3.src = "/public/img/chien0.png";
-const img4 = new Image();
-img4.src = "/public/img/niche0.png";
-const img5 = new Image();
-img5.src = "/public/img/niche1.png";
-const img6 = new Image();
-img6.src = "/public/img/niche2.png";
-const images = [img1, img2, img3, img4, img5, img6];
-
-
-
-
-// Intégration des images
-const drawTheImage = () => {
-	const positions = [
-		{ x: -50, y: 100 },
-		{ x: 250, y: 100 },
-		{ x: 550, y: 100 },
-		{ x: 145, y: 350 },
-		{ x: 250, y: 350 },
-		{ x: 350, y: 350 }
-	];
-
-	images.forEach((img, index) => {
-		if (img.complete) {
-			ctx.drawImage(img, (positions[index].x)*quotientWidth, (positions[index].y)*quotientWidth, 300*quotientWidth, 250*quotientWidth);
-		} else {
-			img.addEventListener("load", () => {
-				ctx.drawImage(img, (positions[index].x)*quotientWidth, (positions[index].y)*quotientWidth, 300*quotientWidth, 250*quotientWidth);
-			});
-		}
-	});
+// Fonction de redessin du graphe
+const redrawGraph = () => {
+    ctx.clearRect(0, 0, graphe.width, graphe.height);
+    // Si les données n'ont pas encore été chargées, on les récupère
+    if(Object.keys(nodesData).length === 0) {
+        fetch('./data.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erreur lors du chargement du fichier JSON');
+                }
+                return response.json();
+            })
+            .then(data => {
+                nodesData = data.graph.nodes;
+                const edgesFromJSON = nodesData.edges;
+                // Filtrer les clés numériques pour les nœuds
+                const nodeKeys = Object.keys(nodesData).filter(key => !isNaN(Number(key)));
+                // Dessiner les nœuds
+                nodeKeys.forEach(key => {
+                    const currentNode = nodesData[key];
+                    let img = new Image();
+                    // Veillez à bien retirer d'éventuels espaces superflus
+                    img.src = "../../public/img/" + currentNode.metadata.decoration.image.trim();
+                    drawTransformedCircle(currentNode.metadata.x, currentNode.metadata.y, "lightgrey");
+                    img.onload = () => {
+                        ctx.drawImage(
+                            img,
+                            currentNode.metadata.x * quotientWidth - currentNode.metadata.decoration.offsetX * quotientWidth,
+                            currentNode.metadata.y * quotientWidth - currentNode.metadata.decoration.offsetY * quotientWidth,
+                            110 * quotientWidth,
+                            150 * quotientWidth
+                        );
+                    };
+                });
+                // Constituer le tableau des arêtes s'il est vide
+                if(edgesTab.length === 0 && edgesFromJSON) {
+                    edgesFromJSON.forEach(edge => {
+                        const sourceNode = nodesData[edge.source];
+                        const targetNode = nodesData[edge.target];
+                        edgesTab.push({ 
+                            x1: sourceNode.metadata.x, 
+                            y1: sourceNode.metadata.y, 
+                            x2: targetNode.metadata.x, 
+                            y2: targetNode.metadata.y, 
+                            color: "grey", 
+                            largeur: 4, 
+                            win: edge.directed // critère gagnant
+                        });
+                    });
+                }
+                // Dessiner les arêtes
+                edgesTab.forEach(edge => {
+                    drawTransformedEdge(edge.x1, edge.y1, edge.x2, edge.y2, edge.color, edge.largeur);
+                });
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+            });
+    } else {
+        // Redessiner en utilisant les données déjà chargées
+        const nodeKeys = Object.keys(nodesData).filter(key => !isNaN(Number(key)));
+        nodeKeys.forEach(key => {
+            const currentNode = nodesData[key];
+            let img = new Image();
+            img.src = "../../public/img/" + currentNode.metadata.decoration.image.trim();
+            drawTransformedCircle(currentNode.metadata.x, currentNode.metadata.y, "lightgrey");
+            img.onload = () => {
+                ctx.drawImage(
+                    img,
+                    currentNode.metadata.x * quotientWidth - currentNode.metadata.decoration.offsetX * quotientWidth,
+                    currentNode.metadata.y * quotientWidth - currentNode.metadata.decoration.offsetY * quotientWidth,
+                    110 * quotientWidth,
+                    150 * quotientWidth
+                );
+            };
+        });
+        edgesTab.forEach(edge => {
+            drawTransformedEdge(edge.x1, edge.y1, edge.x2, edge.y2, edge.color, edge.largeur);
+        });
+    }
 };
 
+// Réinitialiser les arêtes (bouton "Recommencer")
+const resetEdgesColor = () => {
+    edgesTab.forEach(edge => {
+        edge.color = "grey";
+        edge.largeur = 4;
+    });
+    redrawGraph();
+};
 
-/* resoudre la triches possible de mettre toutes les arretes en vert */
-
-const verificationTricherie = () => {
-	let count = 0;
-	edges.forEach(edge => {
-		if (edge.color === "green") {
-			count++;
-		} 
-	});
-	if (count === 3) {
-		validateEdges();
-	} else if (count > 3) {
-
-		swal({
-			title: "Attention vous avez selectionné trop d'arêtes !",
-			text: "Cliquer hors de la fenêtre pour fermer",
-			icon: "warning",
-			buttons: ["Réessayer"],
-		})
-			.then((menu) => {
-				if (menu) {
-					window.location.href = "../../index.html";
-				} else {
-					resetEdgesColor();
-				}
-			});
-
-		} else if (count < 3) {
-
-			swal({
-				title: "Attention vous n'avez pas selectionné assez d'arêtes !",
-				text: "Cliquer hors de la fenêtre pour fermer",
-				icon: "warning",
-				buttons: ["Réessayer"],
-			})
-				.then((menu) => {
-					if (menu) {
-						window.location.href = "../../index.html";
-					} else {
-						resetEdgesColor();
-					}
-				});
-
-	}else {
-		validateEdges();
-}};
-
-
-
-// Vérifie si toutes les arrêtes vertes autorisées sont présentes
-
+// Validation du coup joué (bouton "Valider")
+// Pour chaque arête, si elle doit être active (win === true), alors sa couleur doit être "green"
+// et pour les autres, la couleur ne doit pas être "green"
 const validateEdges = () => {
-    const authorizedGreenEdges = [1,3,8];
+    // Pour chaque arête, si directed (win) est true, elle doit être verte
+    const allCorrect = edgesTab.every(edge => {
+        if (edge.win === true) {
+            return edge.color === "green";
+        } else {
+            return edge.color !== "green";
+        }
+    });
 
-    const allAuthorizedEdgesGreen = authorizedGreenEdges.every(index => edges[index].color === "green");
-
-    if (allAuthorizedEdgesGreen) {
+    if (allCorrect) {
         swal({
             title: "Bien joué !",
             text: "Voulez-vous rejouer ou passer à la suite ?",
@@ -110,10 +118,7 @@ const validateEdges = () => {
         })
         .then((menu) => {
             if (menu) {
-				updateInfo(1, 1);
                 window.location.href = "../../index.html";
-            } else {
-				updateInfo(1, 1);
             }
         });
     } else {
@@ -133,83 +138,48 @@ const validateEdges = () => {
     }
 };
 
-// Changement d'état des arêtes
+
+// Modification de l'état des arêtes au clic sur le canvas
 graphe.addEventListener("click", (event) => {
-	const clickX = (event.clientX - graphe.offsetLeft)/quotientWidth;
-	const clickY = (event.clientY - graphe.offsetTop)/quotientWidth;
-	
-	edges.forEach(edge => {
-
-		let { x1, y1, x2, y2 } = edge;
-
-		const distanceToStart = Math.sqrt((clickX - x1) ** 2 + (clickY - y1) ** 2);
-		const distanceToEnd = Math.sqrt((clickX - x2) ** 2 + (clickY - y2) ** 2);
-		const edgeLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);	
-
-		// Vérifie si le point cliqué est proche de l'arête
-		if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 0.1 ) {
-			if (edge.color === "grey") {
-				edge.color = "green";
-			} else if (edge.color === "red") {
-				edge.color = "grey";
-			} else if (edge.color === "green") {
-				edge.color = "red";
-			}
-
-			redrawGraph();
-		}
-	});
+    const rect = graphe.getBoundingClientRect();
+    const clickX = (event.clientX - rect.left) / quotientWidth;
+    const clickY = (event.clientY - rect.top) / quotientWidth;
+    
+    edgesTab.forEach(edge => {
+        const { x1, y1, x2, y2 } = edge;
+        const distanceToStart = Math.hypot(clickX - x1, clickY - y1);
+        const distanceToEnd = Math.hypot(clickX - x2, clickY - y2);
+        const edgeLength = Math.hypot(x2 - x1, y2 - y1);
+        // Vérifier si le clic est suffisamment proche de l'arête
+        if (Math.abs(distanceToStart + distanceToEnd - edgeLength) < 0.1) {
+            if (edge.color === "grey") {
+                edge.color = "green";
+                edge.largeur = 6;
+            } else if (edge.color === "green") {
+                edge.color = "red";
+                edge.largeur = 5;
+            } else if (edge.color === "red") {
+                edge.color = "grey";
+                edge.largeur = 4;
+            }
+            redrawGraph();
+        }
+    });
 });
 
-// Assurez-vous que toutes les images sont chargées avant d'appeler k3
-const checkImagesLoaded = () => {
-	if (images.every(img => img.complete)) {
-		k3();
-	} else {
-		images.forEach(img => img.addEventListener("load", () => {
-			if (images.every(img => img.complete)) {
-				k3();
-			}
-		}));
-	}
+// Gestion de la taille du canvas
+const setCanvasSize = () => {
+    graphe.width = window.innerWidth / 2;
+    graphe.height = window.innerHeight / 1.1;
+    redrawGraph();
 };
 
-const retourMenu = () => {
-	swal({
-		title:"Voulez-vous retourner au Menu ?",
-		icon: "warning",
-		buttons: ["Non", "Oui"],
-	})
-	.then((menu) => {
-		if (menu) {
-			window.location.href = "../../index.html";
-		} else {
-		}
-	});
-};
+setCanvasSize();
+window.addEventListener("resize", setCanvasSize);
 
-
-// Redimensionnement du canvas
-
-graphe.width = (window.innerWidth/2);
-graphe.height = (window.innerHeight/1.1);
-
-const resizeCanvas = () => {
-
-	let quotientWidth = window.innerWidth / 1500;
-	graphe.width = (window.innerWidth/2);
-	graphe.height = (window.innerHeight/1.1);	
-
-	redrawGraph();
-	drawTheImage();
-};
-
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-
-checkImagesLoaded();
+// Événements sur les boutons
+document.getElementById("valider").addEventListener("click", validateEdges);
 document.getElementById("recommencer").addEventListener("click", resetEdgesColor);
-document.getElementById("valider").addEventListener("click", verificationTricherie);
-document.getElementById("menu").addEventListener("click", retourMenu);
-
-export { drawTheImage,quotientWidth};
+document.getElementById("menu").addEventListener("click", () => {
+    window.location.href = "../../index.html";
+});
